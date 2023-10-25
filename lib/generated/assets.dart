@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String svgGhostParty = 'assets/svg/ghost-party.svg';
   static const String svgHappyGhost = 'assets/svg/happy_ghost.svg';
 
 }
