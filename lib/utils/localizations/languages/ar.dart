@@ -111,6 +111,7 @@ const Map<String, String> ar = {
   "quick_and_easy_shopping_":"تسوق سريع وسهل لجميع احتياجات حفلتك في مكان واحد",
   "skip":"تجاوز.",
   "next":"التالي",
+  "your_party_supplier":"مورِّد حفلتك"
 
 
 

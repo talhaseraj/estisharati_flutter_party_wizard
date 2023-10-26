@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:party_wizard/screens/user_auth_screens/login_screen.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 import '../../generated/assets.dart';
@@ -58,7 +59,7 @@ class OnBoardingScreen extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: MaterialButton(
-                  height:50,
+                  height: 50,
                   elevation: 0,
                   color: AppColors.c_f9f9fb,
                   shape: RoundedRectangleBorder(
@@ -66,22 +67,27 @@ class OnBoardingScreen extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     "skip".tr,
-                    style: const TextStyle(color: AppColors.c_78789d),
+                    style: const TextStyle(color: AppColors.c_78789d,fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-              const Spacer(flex: 2,),
-              Expanded(flex: 3,
+              const Spacer(
+                flex: 2,
+              ),
+              Expanded(
+                flex: 3,
                 child: MaterialButton(
                   height: 50,
                   elevation: 0,
                   color: AppColors.primaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const LoginScreen());
+                  },
                   child: Text(
                     "next".tr,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

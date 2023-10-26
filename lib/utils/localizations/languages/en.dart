@@ -113,5 +113,6 @@ const Map<String, String> en = {
   "quick_and_easy_shopping_":
       "Quick and Easy shopping for all your party needs all in one place",
   "skip": "Skip",
-  "next":"Next"
+  "next":"Next",
+  "your_party_supplier":"your party supplier"
 };

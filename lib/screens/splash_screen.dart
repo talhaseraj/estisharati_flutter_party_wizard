@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:party_wizard/controllers/splash_screen_controller.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
-import '../controllers/splash_screen_controller.dart';
 import '../generated/assets.dart';
 import '../utils/app_colors.dart';
 
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    Get.put(SplashScreenController());
+    Get.put(StartupController());
     return Material(
       child: Container(
         height: size.height,
@@ -46,10 +46,8 @@ class _SplashScreenState extends State<SplashScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SlideTransition(
-                position: offset,
-                child:
-                
-                SvgPicture.asset(Assets.svgHappyGhost),
+              position: offset,
+              child: SvgPicture.asset(Assets.svgHappyGhost),
             ),
             const SizedBox(
               height: 50,
@@ -63,9 +61,10 @@ class _SplashScreenState extends State<SplashScreen>
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              "your party supplier",
+              "your_party_supplier".tr,
               style: GoogleFonts.quicksand(color: Colors.white),
-            )
+            ),
+
           ],
         ),
       ),
