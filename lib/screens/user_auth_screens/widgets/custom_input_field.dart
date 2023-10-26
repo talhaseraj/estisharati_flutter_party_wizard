@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:party_wizard/utils/app_colors.dart';
 
 class CustomInputField extends StatefulWidget {
   final IconData icon;
   final String hint;
   final bool obsecure;
+  final validator;
+  final Function onChanged;
   const CustomInputField({
+    required this.validator,
+    required this.onChanged,
     super.key,
     required this.icon,
     required this.hint,
@@ -22,8 +26,12 @@ class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 90,
       child: TextFormField(
+        validator: widget.validator,
+        onChanged: (text) {
+          widget.onChanged();
+        },
         obscureText: widget.obsecure ? _passVis : false,
         decoration: InputDecoration(
           fillColor: Colors.white,
@@ -31,7 +39,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
           hintText: widget.hint,
           hintStyle: TextStyle(color: AppColors.hintColor),
           prefixIcon: Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             height: 44,
             width: 44,
             decoration: BoxDecoration(
@@ -43,15 +51,17 @@ class _CustomInputFieldState extends State<CustomInputField> {
               color: AppColors.primaryColor,
             ),
           ),
-          
           suffixIcon: widget.obsecure
               ? IconButton(
-                onPressed: (){setState(() {
-                  _passVis=!_passVis;
-                });},
-               icon:  Icon(_passVis? Icons.visibility_off_outlined:Icons.visibility_outlined))
-                
-              : SizedBox.shrink(),
+                  onPressed: () {
+                    setState(() {
+                      _passVis = !_passVis;
+                    });
+                  },
+                  icon: Icon(_passVis
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined))
+              : const SizedBox.shrink(),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.c_eeeeee, width: 2),
             borderRadius: BorderRadius.circular(14),

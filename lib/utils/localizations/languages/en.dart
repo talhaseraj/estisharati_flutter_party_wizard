@@ -113,6 +113,10 @@ const Map<String, String> en = {
   "quick_and_easy_shopping_":
       "Quick and Easy shopping for all your party needs all in one place",
   "skip": "Skip",
-  "next":"Next",
-  "your_party_supplier":"your party supplier"
+  "next": "Next",
+  "your_party_supplier": "your party supplier",
+  "forgot_password": "Forgot Password?",
+  "or_login_with": "or login with...",
+  "are_you_a_new_user": "Are you a new user?",
+  "register": "Register"
 };

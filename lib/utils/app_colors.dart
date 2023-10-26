@@ -14,4 +14,6 @@ static const c_78789d=Color(0xff78789d);
 static const c_4f4f4f = Color(0xff4f4f4f);
 static const c_fff8f3 = Color(0xfffff8f3);
 static const c_eeeeee = Color(0xffeeeeee);
+static const c_2d63f8 = Color(0xff2d63f8);
+static const c_2a2a2a = Color(0xff2a2a2a);
 }
