@@ -118,5 +118,14 @@ const Map<String, String> en = {
   "forgot_password": "Forgot Password?",
   "or_login_with": "or login with...",
   "are_you_a_new_user": "Are you a new user?",
-  "register": "Register"
+  "register": "Register",
+  "or_signup_with": "or signup with...",
+  "username": "User Name",
+  "already_a_user": "Already a user?",
+  "please_enter_username": "Please enter username",
+  "please_enter_a_password": "Please enter a password",
+  "password_must_be_atleast_": "Password must be at least 6 characters long",
+  "please_enter_your_email": "Please enter your email address",
+  "please_enter_a_valid_email": "Please enter a valid email",
+  "password_not_matching": "Password not matching",
 };

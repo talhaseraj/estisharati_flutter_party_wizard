@@ -7,10 +7,13 @@ class CustomInputField extends StatefulWidget {
   final String hint;
   final bool obsecure;
   final validator;
+
+  final TextEditingController controller;
   final Function onChanged;
   const CustomInputField({
     required this.validator,
     required this.onChanged,
+    required this.controller,
     super.key,
     required this.icon,
     required this.hint,
@@ -28,6 +31,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
     return SizedBox(
       height: 90,
       child: TextFormField(
+        controller: widget.controller,
         validator: widget.validator,
         onChanged: (text) {
           widget.onChanged();

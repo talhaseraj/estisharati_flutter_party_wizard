@@ -116,5 +116,14 @@ const Map<String, String> ar = {
   "forgot_password": "هل نسيت كلمة المرور؟",
   "or_login_with": "أو تسجيل الدخول بواسطة...",
   "are_you_a_new_user": "هل أنت مستخدم جديد؟",
-  "register": "تسجيل"
+  "register": "تسجيل",
+  "or_signup_with": "أو سجِّل مع...",
+  "username": "اسم المستخدم",
+  "already_a_user": "هل أنت مستخدم بالفعل؟",
+  "please_enter_username": "الرجاء إدخال اسم المستخدم",
+  "please_enter_a_password": "من فضلك، أدخل كلمة مرور",
+  "password_must_be_atleast_": "يجب أن تكون كلمة المرور على الأقل 6 أحرف",
+  "please_enter_your_email": "من فضلك، أدخل عنوان بريدك الإلكتروني",
+  "please_enter_a_valid_email": "من فضلك، أدخل عنوان بريد إلكتروني صالح",
+  "password_not_matching": "كلمة المرور غير متطابقة",
 };
