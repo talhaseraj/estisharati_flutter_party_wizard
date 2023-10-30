@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       locale: Get.deviceLocale,
+      
       translations: Translation(),
       fallbackLocale: const Locale("en"),
       theme: ThemeData(

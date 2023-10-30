@@ -128,4 +128,5 @@ const Map<String, String> en = {
   "please_enter_your_email": "Please enter your email address",
   "please_enter_a_valid_email": "Please enter a valid email",
   "password_not_matching": "Password not matching",
+  "home": "Home"
 };

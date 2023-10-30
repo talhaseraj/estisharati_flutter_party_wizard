@@ -126,4 +126,5 @@ const Map<String, String> ar = {
   "please_enter_your_email": "من فضلك، أدخل عنوان بريدك الإلكتروني",
   "please_enter_a_valid_email": "من فضلك، أدخل عنوان بريد إلكتروني صالح",
   "password_not_matching": "كلمة المرور غير متطابقة",
+  "home": "الصفحة الرئيسية"
 };

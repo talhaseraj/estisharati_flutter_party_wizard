@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:party_wizard/controllers/user_auth_controller.dart';
+import 'package:party_wizard/screens/home_tab_screens/home_tab_screen.dart';
 import 'package:party_wizard/utils/helpers.dart';
 
 import '../../generated/assets.dart';
@@ -37,12 +38,10 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(Assets.svgHappyGhost),
-
                           AnimatedContainer(
                             duration: const Duration(milliseconds: 250),
                             height: _.isSignup.value ? 0 : 75,
                           ),
-
                           Row(
                             children: [
                               Text(
@@ -55,11 +54,9 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          //),
                           const SizedBox(
                             height: 15,
                           ),
-
                           AnimatedContainer(
                             height: _.isSignup.value ? 90 : 0,
                             duration: const Duration(milliseconds: 250),
@@ -149,6 +146,7 @@ class LoginScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12)),
                               onPressed: () {
                                 _.loginFormKey.currentState!.validate();
+                                Get.to(() => HomeTabScreen());
                               },
                               child: Text(
                                 _.isSignup.value ? "sign_up".tr : "login".tr,
@@ -270,11 +268,12 @@ class LoginScreen extends StatelessWidget {
                                     ? "العربية"
                                     : "English ",
                                 style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: "Lato",
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14.0),
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "Lato",
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 14.0,
+                                ),
                               ),
                             ],
                           ),
