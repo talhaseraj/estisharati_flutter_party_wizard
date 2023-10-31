@@ -5,7 +5,6 @@ import 'package:party_wizard/utils/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:party_wizard/utils/localizations/translation.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -21,18 +20,20 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       locale: Get.deviceLocale,
-      
       translations: Translation(),
       fallbackLocale: const Locale("en"),
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(textTheme).copyWith(
           bodyMedium: GoogleFonts.poppins(),
+          
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+        colorScheme: ColorScheme.fromSeed(
+          
+          seedColor: AppColors.primaryColor,
+        ),
         useMaterial3: true,
       ),
       home: const SplashScreen(),
     );
   }
 }
-

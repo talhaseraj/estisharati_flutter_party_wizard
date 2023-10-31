@@ -115,7 +115,7 @@ const Map<String, String> en = {
   "skip": "Skip",
   "next": "Next",
   "your_party_supplier": "your party supplier",
-  "forgot_password": "Forgot Password?",
+  "forgot_password?": "Forgot Password?",
   "or_login_with": "or login with...",
   "are_you_a_new_user": "Are you a new user?",
   "register": "Register",
@@ -128,5 +128,11 @@ const Map<String, String> en = {
   "please_enter_your_email": "Please enter your email address",
   "please_enter_a_valid_email": "Please enter a valid email",
   "password_not_matching": "Password not matching",
-  "home": "Home"
+  "home": "Home",
+  "forgot_password": "Forgot Password",
+  "reset_password": "Reset Password",
+  "send_instructions": "Send Instructions",
+  "lets_reset_your_password": "let's reset your password",
+  "enter_the_email_associated_":
+      "Enter the email associated with your account and we'll send an email with instructions to reset your password."
 };

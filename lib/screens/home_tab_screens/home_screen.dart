@@ -111,123 +111,137 @@ class HomeScreen extends StatelessWidget {
         ),
         body: SizedBox(
           height: size.height,
-          child: GridView.builder(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              shrinkWrap: true,
-              itemCount: 8,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 3 / 4.8,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                crossAxisCount: 2,
-              ),
-              itemBuilder: (context, index) {
-                bool _discount = index % 2 == 1;
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await Future.delayed(const Duration(seconds: 2));
+            },
+            child: GridView.builder(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                shrinkWrap: true,
+                itemCount: 8,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 3 / 4.8,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) {
+                  final discount = index % 2 == 1;
 
-                return Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(18)),
-                  child: Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          _discount
-                              ? Container(
-                                  height: 42,
-                                  width: 42,
-                                  alignment: Alignment.center,
-                                  decoration: const BoxDecoration(
-                                      color: AppColors.c_5965b1,
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(18),
-                                          bottomRight: Radius.circular(18))),
-                                  child: const Text(
-                                    "%25",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite_outline_rounded,
-                              color: AppColors.c_77838f,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                "https://picsum.photos/id/${index * 10}/300/220",
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      const Text(
-                        "Lobortis fermentum",
-                        style:
-                            TextStyle(color: AppColors.c_1e2022, fontSize: 14),
-                      ),
-                      const Text(
-                        "\$49.00",
-                        style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                      const Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Row(
+                  return Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(18)),
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  color: AppColors.c_fdd546,
-                                ),
-                                Text(
-                                  "(4.8)",
-                                  style: TextStyle(color: AppColors.c_77838f),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              width: 35,
-                              child: MaterialButton(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                height: 35,
-                                padding: EdgeInsets.zero,
-                                elevation: 0,
-                                color: AppColors.primaryColor,
-                                onPressed: () {},
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
+                            discount
+                                ? Container(
+                                    height: 42,
+                                    width: 42,
+                                    alignment: Alignment.center,
+                                    decoration: const BoxDecoration(
+                                        color: AppColors.c_5965b1,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(18),
+                                            bottomRight: Radius.circular(18))),
+                                    child: const Text(
+                                      "%25",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
+                                : const SizedBox.shrink(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.favorite_outline_rounded,
+                                color: AppColors.c_77838f,
                               ),
-                            )
+                            ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      )
-                    ],
-                  ),
-                );
-              }),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: AspectRatio(
+                              aspectRatio: 2 / 1.25,
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    "https://picsum.photos/id/${index * 10}/300/220",
+                                fit: BoxFit.cover,
+                                progressIndicatorBuilder:
+                                    (context, text, progress) {
+                                  return Center(
+                                      child: Text(
+                                          "${progress.downloaded} / ${progress.totalSize}"));
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "Lobortis fermentum",
+                          style: TextStyle(
+                              color: AppColors.c_1e2022, fontSize: 14),
+                        ),
+                        const Text(
+                          "\$49.00",
+                          style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        const Spacer(
+                          flex: 3,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Row(
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: AppColors.c_fdd546,
+                                  ),
+                                  Text(
+                                    "(4.8)",
+                                    style: TextStyle(color: AppColors.c_77838f),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                width: 35,
+                                child: MaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                  height: 35,
+                                  padding: EdgeInsets.zero,
+                                  elevation: 0,
+                                  color: AppColors.primaryColor,
+                                  onPressed: () {},
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                  );
+                }),
+          ),
         ),
       ),
     );

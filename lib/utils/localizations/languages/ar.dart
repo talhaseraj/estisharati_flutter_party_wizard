@@ -113,7 +113,7 @@ const Map<String, String> ar = {
   "skip": "تجاوز.",
   "next": "التالي",
   "your_party_supplier": "مورِّد حفلتك",
-  "forgot_password": "هل نسيت كلمة المرور؟",
+  "forgot_password?": "هل نسيت كلمة المرور؟",
   "or_login_with": "أو تسجيل الدخول بواسطة...",
   "are_you_a_new_user": "هل أنت مستخدم جديد؟",
   "register": "تسجيل",
@@ -126,5 +126,10 @@ const Map<String, String> ar = {
   "please_enter_your_email": "من فضلك، أدخل عنوان بريدك الإلكتروني",
   "please_enter_a_valid_email": "من فضلك، أدخل عنوان بريد إلكتروني صالح",
   "password_not_matching": "كلمة المرور غير متطابقة",
-  "home": "الصفحة الرئيسية"
+  "home": "الصفحة الرئيسية",
+  "forgot_password": "نسيت كلمة المرور",
+  "reset_password": "إعادة تعيين كلمة المرور",
+  "send_instructions": "أرسل التعليمات",
+  "lets_reset_your_password": "لنعيد تعيين كلمة المرور الخاصة بك",
+  "enter_the_email_associated_":"أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل بريدًا إلكترونيًا يحتوي على تعليمات لإعادة تعيين كلمة المرور.",
 };
