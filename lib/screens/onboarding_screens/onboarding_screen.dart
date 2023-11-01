@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:party_wizard/constants/assets.dart';
 import 'package:party_wizard/screens/user_auth_screens/login_screen.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
-import '../../generated/assets.dart';
 import '../../utils/app_colors.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -22,7 +22,11 @@ class OnBoardingScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(Assets.svgGhostParty),
+            Hero(
+                tag: Assets.assetsSvgHappyGhost,
+                child: SvgPicture.asset(
+                  Assets.assetsSvgGhostParty,
+                )),
             const SizedBox(
               height: 20,
             ),
@@ -67,7 +71,8 @@ class OnBoardingScreen extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     "skip".tr,
-                    style: const TextStyle(color: AppColors.c_78789d,fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        color: AppColors.c_78789d, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -76,18 +81,22 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               Expanded(
                 flex: 3,
-                child: MaterialButton(
-                  height: 50,
-                  elevation: 0,
-                  color: AppColors.primaryColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  onPressed: () {
-                    Get.to(() => const LoginScreen());
-                  },
-                  child: Text(
-                    "next".tr,
-                    style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                child: Hero(
+                  tag: "button",
+                  child: MaterialButton(
+                    height: 50,
+                    elevation: 0,
+                    color: AppColors.primaryColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    onPressed: () {
+                      Get.to(() => const LoginScreen());
+                    },
+                    child: Text(
+                      "next".tr,
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),

@@ -134,5 +134,16 @@ const Map<String, String> en = {
   "send_instructions": "Send Instructions",
   "lets_reset_your_password": "let's reset your password",
   "enter_the_email_associated_":
-      "Enter the email associated with your account and we'll send an email with instructions to reset your password."
+      "Enter the email associated with your account and we'll send an email with instructions to reset your password.",
+  "check_your_mail": "Check your mail",
+  "we_have_sent_a_password_":
+      "We have sent a password recover instructions to your email.",
+  "open_mail_app": "Open Mail App",
+  "skip_ill_confirm_later": "Skip, I'll confirm later",
+  "did_not_receive_email_":
+      "Did not receive the email? Check your spam filter.",
+  "try_another_email_address": "Try another email address",
+  "create_new_password": "Create new password",
+  "your_new_password_should_":
+      "Your new password must be different from previous used passwords.",
 };

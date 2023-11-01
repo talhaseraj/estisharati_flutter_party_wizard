@@ -75,3 +75,7 @@ flutter:
       fonts:
         - asset: fonts/Nickainley-Normal.ttf
 
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/constants/
+  filename: assets.dart

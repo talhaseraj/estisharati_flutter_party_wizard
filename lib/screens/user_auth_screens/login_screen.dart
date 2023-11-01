@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:party_wizard/constants/assets.dart';
 import 'package:party_wizard/controllers/user_auth_controller.dart';
 import 'package:party_wizard/screens/forgot_password_screens/forgot_password_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/home_tab_screen.dart';
 import 'package:party_wizard/utils/helpers.dart';
 
-import '../../generated/assets.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_input_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -39,22 +39,33 @@ class LoginScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(Assets.svgHappyGhost),
+                            Hero(
+                                tag: Assets.assetsSvgHappyGhost,
+                                child: SvgPicture.asset(
+                                    Assets.assetsSvgHappyGhost)),
                             AnimatedContainer(
                               duration: const Duration(milliseconds: 250),
                               height: _.isSignup.value ? 0 : 75,
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  _.isSignup.value ? "sign_up".tr : "login".tr,
-                                  style: const TextStyle(
-                                    color: AppColors.c_4f4f4f,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
+                            Hero(
+                              tag: "title",
+                              child: Row(
+                                children: [
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: Text(
+                                      _.isSignup.value
+                                          ? "sign_up".tr
+                                          : "login".tr,
+                                      style: const TextStyle(
+                                        color: AppColors.c_4f4f4f,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               height: 15,
@@ -77,46 +88,56 @@ class LoginScreen extends StatelessWidget {
                             ),
 
                             //),
-                            CustomInputField(
-                                controller: _.emailController,
+                            Hero(
+                              tag: "email input",
+                              child: CustomInputField(
+                                  controller: _.emailController,
+                                  onChanged: () {
+                                    _.loginFormKey.currentState!.validate();
+                                  },
+                                  validator: (val) =>
+                                      Helpers.validateEmail(val ?? ""),
+                                  obsecure: false,
+                                  hint: 'email'.tr,
+                                  icon: Icons.mail_outline_rounded),
+                            ),
+                            Hero(
+                              tag: "password input",
+                              child: CustomInputField(
+                                controller: _.passwordController,
                                 onChanged: () {
                                   _.loginFormKey.currentState!.validate();
                                 },
                                 validator: (val) =>
-                                    Helpers.validateEmail(val ?? ""),
-                                obsecure: false,
-                                hint: 'email'.tr,
-                                icon: Icons.mail_outline_rounded),
-                            CustomInputField(
-                              controller: _.passwordController,
-                              onChanged: () {
-                                _.loginFormKey.currentState!.validate();
-                              },
-                              validator: (val) =>
-                                  Helpers.validatePassword(val ?? ""),
-                              obsecure: true,
-                              hint: 'password'.tr,
-                              icon: Icons.lock_outline_rounded,
+                                    Helpers.validatePassword(val ?? ""),
+                                obsecure: true,
+                                hint: 'password'.tr,
+                                icon: Icons.lock_outline_rounded,
+                              ),
                             ),
 
-                            AnimatedContainer(
-                              height: _.isSignup.value ? 90 : 0,
-                              duration: const Duration(milliseconds: 250),
-                              child: _.isSignup.value
-                                  ? CustomInputField(
-                                      controller: _.confirmPasswordController,
-                                      onChanged: () {
-                                        _.loginFormKey.currentState!.validate();
-                                      },
-                                      validator: (val) =>
-                                          Helpers.validateConfirmPassword(
-                                              val ?? "",
-                                              _.passwordController.text),
-                                      obsecure: true,
-                                      hint: 'confirm_password'.tr,
-                                      icon: Icons.lock_outline_rounded,
-                                    )
-                                  : const SizedBox.shrink(),
+                            Hero(
+                              tag: "confirm password input",
+                              child: AnimatedContainer(
+                                height: _.isSignup.value ? 90 : 0,
+                                duration: const Duration(milliseconds: 250),
+                                child: _.isSignup.value
+                                    ? CustomInputField(
+                                        controller: _.confirmPasswordController,
+                                        onChanged: () {
+                                          _.loginFormKey.currentState!
+                                              .validate();
+                                        },
+                                        validator: (val) =>
+                                            Helpers.validateConfirmPassword(
+                                                val ?? "",
+                                                _.passwordController.text),
+                                        obsecure: true,
+                                        hint: 'confirm_password'.tr,
+                                        icon: Icons.lock_outline_rounded,
+                                      )
+                                    : const SizedBox.shrink(),
+                              ),
                             ),
 
                             AnimatedContainer(
@@ -145,21 +166,26 @@ class LoginScreen extends StatelessWidget {
                             ),
                             SizedBox(
                               width: double.infinity,
-                              child: MaterialButton(
-                                height: 50,
-                                elevation: 0,
-                                color: AppColors.primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                onPressed: () {
-                                  _.loginFormKey.currentState!.validate();
-                                  Get.to(() => HomeTabScreen());
-                                },
-                                child: Text(
-                                  _.isSignup.value ? "sign_up".tr : "login".tr,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                              child: Hero(
+                                tag: "button",
+                                child: MaterialButton(
+                                  height: 50,
+                                  elevation: 0,
+                                  color: AppColors.primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                  onPressed: () {
+                                    _.loginFormKey.currentState!.validate();
+                                    Get.to(() => HomeTabScreen());
+                                  },
+                                  child: Text(
+                                    _.isSignup.value
+                                        ? "sign_up".tr
+                                        : "login".tr,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                             ),

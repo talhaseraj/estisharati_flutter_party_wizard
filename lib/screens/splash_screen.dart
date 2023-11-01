@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:party_wizard/constants/assets.dart';
 import 'package:party_wizard/controllers/splash_screen_controller.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
-import '../generated/assets.dart';
 import '../utils/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
           children: <Widget>[
             SlideTransition(
               position: offset,
-              child: SvgPicture.asset(Assets.svgHappyGhost),
+              child: SvgPicture.asset(Assets.assetsSvgHappyGhost),
             ),
             const SizedBox(
               height: 50,
@@ -64,7 +64,6 @@ class _SplashScreenState extends State<SplashScreen>
               "your_party_supplier".tr,
               style: GoogleFonts.quicksand(color: Colors.white),
             ),
-
           ],
         ),
       ),

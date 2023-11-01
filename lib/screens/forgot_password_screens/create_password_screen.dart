@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:party_wizard/constants/assets.dart';
 import 'package:party_wizard/controllers/forgot_password_controller.dart';
-import 'package:party_wizard/screens/forgot_password_screens/second_forgot_password_screen.dart';
+
+import 'package:party_wizard/screens/home_tab_screens/home_tab_screen.dart';
 
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:party_wizard/utils/helpers.dart';
 import 'package:party_wizard/widgets/custom_input_field.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class CreatePasswordScreen extends StatelessWidget {
+  const CreatePasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           width: size.width,
           child: Form(
-            key: _.formKey,
+            key: _.createPasswordFormKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +58,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     child: Text(
-                      "lets_reset_your_password".tr,
+                      "create_new_password".tr,
                       style: const TextStyle(
                           color: AppColors.c_4f4f4f,
                           fontWeight: FontWeight.bold,
@@ -75,7 +76,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     child: SizedBox(
                       width: size.width * .85,
                       child: Text(
-                        "enter_the_email_associated_".tr,
+                        "your_new_password_should_".tr,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                             color: AppColors.c_4f4f4f, fontSize: 14),
@@ -86,18 +87,26 @@ class ForgotPasswordScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Hero(
-                  tag: "email input",
-                  child: CustomInputField(
-                    controller: TextEditingController(),
-                    onChanged: () {
-                      _.formKey.currentState!.validate();
-                    },
-                    validator: (val) => Helpers.validateEmail(val ?? ""),
-                    obsecure: false,
-                    hint: 'email'.tr,
-                    icon: Icons.mail_outline_rounded,
-                  ),
+                CustomInputField(
+                  controller: _.passwordController,
+                  onChanged: () {
+                    _.createPasswordFormKey.currentState!.validate();
+                  },
+                  validator: (val) => Helpers.validatePassword(val ?? ""),
+                  obsecure: true,
+                  hint: 'password'.tr,
+                  icon: Icons.lock_outline_rounded,
+                ),
+                CustomInputField(
+                  controller: _.confirmPasswordController,
+                  onChanged: () {
+                    _.createPasswordFormKey.currentState!.validate();
+                  },
+                  validator: (val) => Helpers.validateConfirmPassword(
+                      val ?? "", _.passwordController.text),
+                  obsecure: true,
+                  hint: 'confirm_password'.tr,
+                  icon: Icons.lock_outline_rounded,
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -109,10 +118,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                       onPressed: () {
-                        Get.to(() => SecondForgotPasswordScreen());
+                        Get.offAll(HomeTabScreen());
                       },
                       child: Text(
-                        "send_instructions".tr,
+                        "reset_password".tr,
                         style: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
