@@ -265,8 +265,9 @@ Widget categoryWidget(text, onTap, bool selected) {
       child: Text(
         text,
         style: TextStyle(
-            color: selected ? AppColors.primaryColor : AppColors.c_77838f,
-            fontSize: 18),
+          color: selected ? AppColors.primaryColor : AppColors.c_77838f,
+          fontSize: 18,
+        ),
       ),
     ),
   );

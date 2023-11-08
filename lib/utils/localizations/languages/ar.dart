@@ -144,4 +144,10 @@ const Map<String, String> ar = {
   "create_new_password": "أنشئ كلمة مرور جديدة",
   "your_new_password_should_":
       "يجب أن تكون كلمة المرور الجديدة مختلفة عن الكلمات المرورية المستخدمة سابقًا.",
+  "party_supplies": "لوازم الحفلات",
+  "birthday": "عيد ميلاد",
+  "summer": "صيف",
+  "balloons": "بالونات",
+  "costumes": "أزياء",
+  "candy": "حلوى",
 };

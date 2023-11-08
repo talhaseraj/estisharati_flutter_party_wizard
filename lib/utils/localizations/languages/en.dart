@@ -146,4 +146,10 @@ const Map<String, String> en = {
   "create_new_password": "Create new password",
   "your_new_password_should_":
       "Your new password must be different from previous used passwords.",
+  "party_supplies": "Party Supplies",
+  "birthday": "Birthday",
+  "summer": "Summer",
+  "balloons": "Balloons",
+  "costumes": "Costumes",
+  "candy": "Candy",
 };

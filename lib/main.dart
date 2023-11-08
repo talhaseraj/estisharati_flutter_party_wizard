@@ -25,10 +25,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(textTheme).copyWith(
           bodyMedium: GoogleFonts.poppins(),
-          
         ),
         colorScheme: ColorScheme.fromSeed(
-          
           seedColor: AppColors.primaryColor,
         ),
         useMaterial3: true,

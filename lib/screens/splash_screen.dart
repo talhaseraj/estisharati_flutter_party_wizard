@@ -40,8 +40,6 @@ class _SplashScreenState extends State<SplashScreen>
         height: size.height,
         width: size.width,
         color: AppColors.secondaryBlueColor,
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

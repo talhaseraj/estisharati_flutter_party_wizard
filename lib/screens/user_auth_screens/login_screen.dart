@@ -24,6 +24,7 @@ class LoginScreen extends StatelessWidget {
         child: InkWell(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+          focusColor: Colors.transparent,
           onTap: () {
             FocusScope.of(context).unfocus();
           },
