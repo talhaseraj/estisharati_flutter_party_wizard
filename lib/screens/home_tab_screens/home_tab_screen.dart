@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:party_wizard/screens/home_tab_screens/cart_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/home_screen.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:collection/collection.dart';
@@ -30,7 +31,7 @@ class HomeTabScreen extends StatelessWidget {
         children: [
           HomeScreen(),
           Center(child: Text("page 2")),
-          Center(child: Text("page 3")),
+          CartScreen(),
           Center(child: Text("page 4")),
         ],
       ),
