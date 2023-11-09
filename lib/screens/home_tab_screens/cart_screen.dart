@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:party_wizard/screens/checkout_screen.dart';
 
 import '../../../utils/app_colors.dart';
 
@@ -17,6 +18,7 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: AppColors.bgColor,
+        leading:const SizedBox.shrink(),
         title: Text(
           "cart".tr,
           style: const TextStyle(
@@ -37,18 +39,15 @@ class CartScreen extends StatelessWidget {
                 2,
                 (index) => Padding(
                   padding: EdgeInsets.only(top: size.width * .025),
-                  child: Hero(
-                    tag: "item$index",
-                    child: CartItemsCard(
-                      imageUrl:
-                          "https://picsum.photos/id/${index + 1 * 35}/200/250",
-                      onTap: () {
-                        if (kDebugMode) {
-                          print("tap$index");
-                        }
-                      },
-                      index: index,
-                    ),
+                  child: CartItemsCard(
+                    imageUrl:
+                        "https://picsum.photos/id/${index + 1 * 35}/200/250",
+                    onTap: () {
+                      if (kDebugMode) {
+                        print("tap$index");
+                      }
+                    },
+                    index: index,
                   ),
                 ),
               ),
@@ -83,25 +82,35 @@ class CartScreen extends StatelessWidget {
           ),
         ]),
       ),
-      bottomNavigationBar: Container(
-        height: 60,
-        padding: EdgeInsets.only(
-          bottom: size.width * .025,
-          left: size.width * .05,
-          right: size.width * .05,
-        ),
-        child: MaterialButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          color: AppColors.primaryColor,
-          onPressed: () {},
-          child: Center(
-            child: Text(
-              'proceed_to_buy_'.trParams({"items": 3.toString()}),
-              style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900),
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          height: 60,
+          padding: EdgeInsets.only(
+            bottom: size.width * .025,
+            left: size.width * .05,
+            right: size.width * .05,
+          ),
+          child: Hero(
+            tag: "button",
+            child: Material(
+              color: Colors.transparent,
+              child: MaterialButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
+                color: AppColors.primaryColor,
+                onPressed: () {
+                  Get.to(() => const CheckoutScreen());
+                },
+                child: Center(
+                  child: Text(
+                    'proceed_to_buy_'.trParams({"items": 3.toString()}),
+                    style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

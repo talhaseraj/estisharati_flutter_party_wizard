@@ -152,4 +152,8 @@ const Map<String, String> en = {
   "balloons": "Balloons",
   "costumes": "Costumes",
   "candy": "Candy",
+  "address_details": "Address Details",
+  "country": "Country",
+  "city": "City",
+  "nearby_landmark": "Nearby Landmark"
 };

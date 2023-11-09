@@ -7,6 +7,7 @@ class AppColors {
   static const secondaryBlueColor = Color(0xff5965b1);
   static const bgColor = Color(0xfff5f5f5);
   static final hintColor = Colors.grey.shade500;
+  static const brownishGrey = Color(0xff707070);
 
   //color codes
   static const c_222e6a = Color(0xff222e6a);
@@ -26,4 +27,7 @@ class AppColors {
   static const c_333333 = Color(0xff333333);
   static const c_edecf5 = Color(0xffedecf5);
   static const c_DDDEE3 = Color(0xffDDDEE3);
+  static const c_3a6c83 = Color(0xff3a6c83);
+  static const c_c4c4c4 = Color(0xffc4c4c4);
+  static const c_e8e4df = Color(0xffe8e4df);
 }

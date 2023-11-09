@@ -30,6 +30,22 @@ class MyApp extends StatelessWidget {
           seedColor: AppColors.primaryColor,
         ),
         useMaterial3: true,
+        textSelectionTheme:
+            const TextSelectionThemeData(cursorColor: AppColors.primaryColor),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.c_c4c4c4),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.c_c4c4c4),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.primaryColor),
+          ),
+        ),
       ),
       home: const SplashScreen(),
     );
