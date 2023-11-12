@@ -132,6 +132,7 @@ class HomeScreen extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       Get.to(() => ProductDetailsScreen(
+                            price: 49.00,
                             productId: index,
                           ));
                     },

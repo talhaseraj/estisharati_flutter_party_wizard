@@ -155,5 +155,7 @@ const Map<String, String> en = {
   "address_details": "Address Details",
   "country": "Country",
   "city": "City",
-  "nearby_landmark": "Nearby Landmark"
+  "nearby_landmark": "Nearby Landmark",
+  "about_product": "About products",
+  "buy_now": "Buy Now"
 };

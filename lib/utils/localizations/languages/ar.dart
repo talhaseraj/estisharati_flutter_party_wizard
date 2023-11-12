@@ -150,8 +150,10 @@ const Map<String, String> ar = {
   "balloons": "بالونات",
   "costumes": "أزياء",
   "candy": "حلوى",
-    "address_details": "تفاصيل العنوان",
+  "address_details": "تفاصيل العنوان",
   "country": "البلد",
   "city": "مدينة",
   "nearby_landmark": "معلم قريب",
+  "about_product": "حول المنتج",
+  "buy_now": "اشترِ الآن",
 };
