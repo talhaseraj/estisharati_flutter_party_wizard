@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:party_wizard/screens/404_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/cart_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/home_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/menu_screen.dart';
@@ -31,9 +32,9 @@ class HomeTabScreen extends StatelessWidget {
         controller: pageController.value,
         children: [
           HomeScreen(),
-          const Center(child: Text("page 2")),
+          const Screen404(),
           const CartScreen(),
-           MenuScreen(),
+          MenuScreen(),
         ],
       ),
       bottomNavigationBar: Container(

@@ -48,4 +48,8 @@ class Assets {
   /// Assets for assetsSvgIconsSettings
   /// assets/svg/icons/settings.svg
   static const String assetsSvgIconsSettings = "assets/svg/icons/settings.svg";
+
+  /// Assets for assetsSvgSadGhost
+  /// assets/svg/sad-ghost.svg
+  static const String assetsSvgSadGhost = "assets/svg/sad-ghost.svg";
 }

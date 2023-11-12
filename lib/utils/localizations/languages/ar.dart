@@ -156,4 +156,6 @@ const Map<String, String> ar = {
   "nearby_landmark": "معلم قريب",
   "about_product": "حول المنتج",
   "buy_now": "اشترِ الآن",
+  "oops_so_sorry": "آسف... آسف جدًا",
+  "page_not_found": "الصفحة غير موجودة!",
 };

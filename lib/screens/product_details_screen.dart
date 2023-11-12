@@ -192,7 +192,7 @@ class ProductDetailsScreen extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -290,9 +290,10 @@ class ProductDetailsScreen extends StatelessWidget {
                 Obx(() => Text(
                       "\$${_.totalPrice.value}",
                       style: const TextStyle(
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     )),
               ],
             ),
