@@ -514,7 +514,7 @@ class SelectPaymentMethod extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'confirm'.tr,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 18,
                         color: Colors.white,
                         fontWeight: FontWeight.w900),
