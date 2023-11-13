@@ -38,12 +38,12 @@ class Screen404 extends StatelessWidget {
                   fontSize: 33,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 SvgPicture.asset(Assets.assetsSvgSadGhost)

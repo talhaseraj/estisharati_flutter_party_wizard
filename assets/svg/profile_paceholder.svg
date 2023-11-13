@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+    <g data-name="Group 60">
+        <g style="fill:transparent;stroke:#e8e4df">
+            <rect width="35" height="35" rx="17.5" style="stroke:none"/>
+            <rect x=".5" y=".5" width="34" height="34" rx="17" style="fill:none"/>
+        </g>
+        <path data-name="Icon awesome-user" d="M8.418 9.62a4.81 4.81 0 1 0-4.81-4.81 4.81 4.81 0 0 0 4.81 4.81zm3.367 1.2h-.628a6.541 6.541 0 0 1-5.479 0h-.627A5.052 5.052 0 0 0 0 15.873v1.563a1.8 1.8 0 0 0 1.8 1.8h13.231a1.8 1.8 0 0 0 1.8-1.8v-1.563a5.052 5.052 0 0 0-5.046-5.05z" transform="translate(9 7.798)" style="fill:#e8e4df"/>
+    </g>
+</svg>

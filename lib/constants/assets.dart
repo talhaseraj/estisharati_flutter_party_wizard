@@ -49,6 +49,10 @@ class Assets {
   /// assets/svg/icons/settings.svg
   static const String assetsSvgIconsSettings = "assets/svg/icons/settings.svg";
 
+  /// Assets for assetsSvgProfilePaceholder
+  /// assets/svg/profile_paceholder.svg
+  static const String assetsSvgProfilePaceholder = "assets/svg/profile_paceholder.svg";
+
   /// Assets for assetsSvgSadGhost
   /// assets/svg/sad-ghost.svg
   static const String assetsSvgSadGhost = "assets/svg/sad-ghost.svg";

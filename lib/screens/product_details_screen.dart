@@ -6,6 +6,7 @@ import 'package:party_wizard/controllers/product_details_screen_controller.dart'
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:party_wizard/widgets/rating_star_row_widget.dart';
 import 'package:party_wizard/widgets/see_more_widget.dart';
+import 'package:party_wizard/widgets/show_reviews_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final productId;
@@ -159,16 +160,16 @@ class ProductDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Row(
+          Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Party Balloons",
                     style: TextStyle(
                       color: AppColors.c_1e2022,
@@ -176,18 +177,26 @@ class ProductDetailsScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  RatingStarRow(rating: 5.0, size: 15)
+                  InkWell(
+                      onTap: () {
+                        _showReviews(context: context);
+                      },
+                      child: const RatingStarRow(
+                        rating: 5.0,
+                        size: 15,
+                        showRating: true,
+                      ))
                 ],
               ),
-              Spacer(),
-              Text(
+              const Spacer(),
+              const Text(
                 "\$49.00",
                 style: TextStyle(color: AppColors.c_77838f),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               )
             ],
@@ -319,6 +328,20 @@ class ProductDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showReviews({
+    required BuildContext context,
+  }) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      useSafeArea: true,
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return const ShowReviewsWidget();
+      },
     );
   }
 
