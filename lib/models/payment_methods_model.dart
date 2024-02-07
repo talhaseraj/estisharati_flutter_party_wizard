@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-class PaymentMethodModel{
- const PaymentMethodModel({ this.title,required this.icon});
- final String? title;
- final IconData icon;
+
+import '../utils/enum.dart';
+
+class PaymentMethodModel {
+  const PaymentMethodModel(
+      {required this.title, required this.icon, required this.method});
+  final String title;
+  final LocalPaymentMethod method;
+  final IconData icon;
 }

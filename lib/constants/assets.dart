@@ -25,6 +25,14 @@ class Assets {
   /// assets/png/party_caps.png
   static const String assetsPngPartyCaps = "assets/png/party_caps.png";
 
+  /// Assets for assetsSvgCancelRound
+  /// assets/svg/cancel_round.svg
+  static const String assetsSvgCancelRound = "assets/svg/cancel_round.svg";
+
+  /// Assets for assetsSvgDoneRound
+  /// assets/svg/done_round.svg
+  static const String assetsSvgDoneRound = "assets/svg/done_round.svg";
+
   /// Assets for assetsSvgGhostMail
   /// assets/svg/ghost_mail.svg
   static const String assetsSvgGhostMail = "assets/svg/ghost_mail.svg";
@@ -49,6 +57,10 @@ class Assets {
   /// assets/svg/icons/settings.svg
   static const String assetsSvgIconsSettings = "assets/svg/icons/settings.svg";
 
+  /// Assets for assetsSvgNoInternet
+  /// assets/svg/no_internet.svg
+  static const String assetsSvgNoInternet = "assets/svg/no_internet.svg";
+
   /// Assets for assetsSvgProfilePaceholder
   /// assets/svg/profile_paceholder.svg
   static const String assetsSvgProfilePaceholder = "assets/svg/profile_paceholder.svg";
@@ -57,3 +69,4 @@ class Assets {
   /// assets/svg/sad-ghost.svg
   static const String assetsSvgSadGhost = "assets/svg/sad-ghost.svg";
 }
+

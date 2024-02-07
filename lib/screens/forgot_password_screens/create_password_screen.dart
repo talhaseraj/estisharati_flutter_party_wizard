@@ -41,7 +41,7 @@ class CreatePasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           width: size.width,
           child: Form(
-            key: _.createPasswordFormKey,
+            key: _.formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +90,7 @@ class CreatePasswordScreen extends StatelessWidget {
                 CustomInputField(
                   controller: _.passwordController,
                   onChanged: () {
-                    _.createPasswordFormKey.currentState!.validate();
+                    _.formKey.currentState!.validate();
                   },
                   validator: (val) => Helpers.validatePassword(val ?? ""),
                   obsecure: true,
@@ -100,7 +100,7 @@ class CreatePasswordScreen extends StatelessWidget {
                 CustomInputField(
                   controller: _.confirmPasswordController,
                   onChanged: () {
-                    _.createPasswordFormKey.currentState!.validate();
+                    _.formKey.currentState!.validate();
                   },
                   validator: (val) => Helpers.validateConfirmPassword(
                       val ?? "", _.passwordController.text),

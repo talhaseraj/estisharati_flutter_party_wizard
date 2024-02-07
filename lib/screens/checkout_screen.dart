@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/app_colors.dart';
+import '../controllers/payment_screen_controller.dart';
 import '../models/payment_methods_model.dart';
+import '../utils/enum.dart';
+import 'home_tab_screens/home_tab_screen.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
@@ -218,7 +224,7 @@ class CheckoutScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16)),
                 color: AppColors.primaryColor,
                 onPressed: () {
-                  _showPaymentMethodSheet(context);
+             
                 },
                 child: Center(
                   child: Text(
@@ -237,17 +243,7 @@ class CheckoutScreen extends StatelessWidget {
     );
   }
 
-  _showPaymentMethodSheet(context) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      useSafeArea: true,
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (BuildContext context) {
-        return SelectPaymentMethod();
-      },
-    );
-  }
+
 }
 
 class CartItemsCard extends StatefulWidget {
@@ -420,114 +416,171 @@ Widget tile(title, price) {
 }
 
 class SelectPaymentMethod extends StatelessWidget {
-  SelectPaymentMethod({super.key});
+  final int amount;
+  final String orderId;
+  SelectPaymentMethod({
+    super.key,
+    required this.amount,
+    required this.orderId,
+  });
 
-  var paymentMethods = <PaymentMethodModel>[
+  final paymentMethods = <PaymentMethodModel>[
     PaymentMethodModel(
-        title: "credit_card".tr, icon: FontAwesomeIcons.creditCard),
-    PaymentMethodModel(title: "paypal".tr, icon: FontAwesomeIcons.paypal),
-    PaymentMethodModel(title: "bank_account".tr, icon: FontAwesomeIcons.bank),
-    PaymentMethodModel(title: "stripe".tr, icon: FontAwesomeIcons.stripe),
-    PaymentMethodModel(title: "apple_pay".tr, icon: FontAwesomeIcons.applePay),
+      title: "credit_card".tr,
+      icon: FontAwesomeIcons.creditCard,
+      method: LocalPaymentMethod.card,
+    ),
     PaymentMethodModel(
-        title: "google_pay".tr, icon: FontAwesomeIcons.googlePay),
+      title: "paypal".tr,
+      icon: FontAwesomeIcons.paypal,
+      method: LocalPaymentMethod.paypal,
+    ),
+    // PaymentMethodModel(title: "bank_account".tr, icon: FontAwesomeIcons.bank),
+    // PaymentMethodModel(title: "stripe".tr, icon: FontAwesomeIcons.stripe),
+    if (false)
+      if (Platform.isIOS)
+        PaymentMethodModel(
+            method: LocalPaymentMethod.applePay,
+            title: "apple_pay".tr,
+            icon: FontAwesomeIcons.applePay),
+    if (false)
+      if (Platform.isAndroid)
+        PaymentMethodModel(
+            method: LocalPaymentMethod.googlePay,
+            title: "google_pay".tr,
+            icon: FontAwesomeIcons.googlePay),
   ];
-  var selectedMethod = 100.obs;
+  final selectedMethod = 100.obs;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            SizedBox(
-              height: size.width * .0125,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const CloseButton(
-                  color: Colors.transparent,
+    return GetBuilder<PaymentScreenController>(
+        init: PaymentScreenController(orderId: orderId),
+        builder: (_) {
+          return Scaffold(
+            body: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    SizedBox(
+                      height: size.width * .0125,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const CloseButton(
+                          color: Colors.transparent,
+                        ),
+                        Center(
+                          child: Text(
+                            'payment_method'.tr,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        CloseButton(
+                          onPressed: () {
+                            Get.offAll(() => HomeTabScreen());
+                          },
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    const Divider(
+                      color: Colors.transparent,
+                    ),
+                    Expanded(
+                      child: ListView.separated(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * .05),
+                          itemBuilder: (context, index) {
+                            final data = paymentMethods[index];
+                            return Obx(
+                              () => _paymentMethodTile(
+                                onTap: () {
+                                  selectedMethod.value = index;
+                                  if (kDebugMode) {
+                                    print(index);
+                                  }
+                                },
+                                isSelected: selectedMethod.value == index,
+                                data: data,
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return const Divider(
+                              color: Colors.transparent,
+                            );
+                          },
+                          itemCount: paymentMethods.length),
+                    ),
+                    SizedBox(
+                      height: size.width * .1,
+                    ),
+                  ],
                 ),
-                Center(
-                  child: Text(
-                    'payment_method'.tr,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+              ),
+            ),
+            bottomNavigationBar: InkWell(
+              onTap: () {
+                _.processPayment(
+                    method: paymentMethods[selectedMethod.value].method,
+                    amount: amount,
+                    orderId: orderId);
+              },
+              child: SafeArea(
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: size.width * .05,
+                    right: size.width * .05,
+                    bottom: 20,
+                  ),
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    // Same as the button's shape
+                    gradient: const LinearGradient(
+                      colors: [AppColors.c_ecc89c, AppColors.c_76644e],
+                      // Define your gradient colors
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
                     ),
                   ),
-                ),
-                const CloseButton(),
-              ],
-            ),
-            const Divider(
-              thickness: 1,
-            ),
-            const Divider(
-              color: Colors.transparent,
-            ),
-            ListView.separated(
-                shrinkWrap: true,
-                padding: EdgeInsets.symmetric(horizontal: size.width * .05),
-                itemBuilder: (context, index) {
-                  final data = paymentMethods[index];
-                  return Obx(() => _paymentMethodTile(
-                        onTap: () {
-                          selectedMethod.value = index;
-                          if (kDebugMode) {
-                            print(index);
-                          }
-                        },
-                        isSelected: selectedMethod.value == index,
-                        data: data,
-                      ));
-                },
-                separatorBuilder: (context, index) {
-                  return const Divider(
-                    color: Colors.transparent,
-                  );
-                },
-                itemCount: paymentMethods.length),
-            SizedBox(
-              height: size.width * .1,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
-                elevation: 0,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                color: AppColors.primaryColor,
-                height: size.width * .15,
-                child: Center(
-                  child: Text(
-                    'confirm'.tr,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900),
+                  child: Obx(
+                    () => Center(
+                      child: _.paymentProcessing.value
+                          ? const CupertinoActivityIndicator(
+                              color: Colors.white,
+                            )
+                          : Text(
+                              'confirm'.tr,
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
-
   Widget _paymentMethodTile(
       {required bool isSelected,
       required PaymentMethodModel data,

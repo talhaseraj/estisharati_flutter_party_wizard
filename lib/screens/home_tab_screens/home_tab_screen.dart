@@ -7,6 +7,8 @@ import 'package:party_wizard/screens/404_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/cart_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/home_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/menu_screen.dart';
+import 'package:party_wizard/screens/profile_menu_screens/account_screen.dart';
+import 'package:party_wizard/screens/profile_menu_screens/profile_menu_screen.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:collection/collection.dart';
 
@@ -19,23 +21,28 @@ class HomeTabScreen extends StatelessWidget {
   var currentIndex = 0.obs;
   var bottomTabIconsList = [
     Icons.home_outlined,
-    Icons.person_outline,
     Icons.shopping_bag_outlined,
-    Icons.grid_view
+    Icons.grid_view,
+    Icons.person_outline,
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgColor,
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController.value,
-        children: [
-          HomeScreen(),
-          const Screen404(),
-          const CartScreen(),
-          MenuScreen(),
-        ],
+      body: InkWell(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: pageController.value,
+          children: [
+            HomeScreen(),
+            const CartScreen(),
+            MenuScreen(),
+            const ProfileMenuScreen(),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 20),

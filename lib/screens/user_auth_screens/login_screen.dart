@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -76,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                               duration: const Duration(milliseconds: 250),
                               child: _.isSignup.value
                                   ? CustomInputField(
-                                      controller: _.usernameController,
+                                      controller: _.userNameController,
                                       onChanged: () {
                                         _.loginFormKey.currentState!.validate();
                                       },
@@ -101,6 +102,24 @@ class LoginScreen extends StatelessWidget {
                                   obsecure: false,
                                   hint: 'email'.tr,
                                   icon: Icons.mail_outline_rounded),
+                            ),
+
+                            AnimatedContainer(
+                              height: _.isSignup.value ? 90 : 0,
+                              duration: const Duration(milliseconds: 250),
+                              child: _.isSignup.value
+                                  ? CustomInputField(
+                                      controller: _.phoneController,
+                                      onChanged: () {
+                                        _.loginFormKey.currentState!.validate();
+                                      },
+                                      validator: (val) =>
+                                          Helpers.validatePhoneNumber(
+                                              val ?? ""),
+                                      obsecure: false,
+                                      hint: 'phone'.tr,
+                                      icon: Icons.phone)
+                                  : const SizedBox.shrink(),
                             ),
                             Hero(
                               tag: "password input",
@@ -165,31 +184,39 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: Hero(
-                                tag: "button",
-                                child: MaterialButton(
-                                  height: 50,
-                                  elevation: 0,
-                                  color: AppColors.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12)),
-                                  onPressed: () {
-                                    _.loginFormKey.currentState!.validate();
-                                    Get.to(() => HomeTabScreen());
-                                  },
-                                  child: Text(
-                                    _.isSignup.value
-                                        ? "sign_up".tr
-                                        : "login".tr,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
+                            Obx(() => SizedBox(
+                                  width: double.infinity,
+                                  child: Hero(
+                                    tag: "button",
+                                    child: MaterialButton(
+                                      height: 50,
+                                      elevation: 0,
+                                      color: AppColors.primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12)),
+                                      onPressed: () {
+                                        if (_.isSignup.value) {
+                                          _.signup(context);
+                                          return;
+                                        }
+                                        _.login(context);
+                                      },
+                                      child: _.isLoading.value
+                                          ? const CupertinoActivityIndicator(
+                                              color: Colors.white,
+                                            )
+                                          : Text(
+                                              _.isSignup.value
+                                                  ? "sign_up".tr
+                                                  : "login".tr,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
+                                )),
                             const SizedBox(
                               height: 15,
                             ),
@@ -208,19 +235,19 @@ class LoginScreen extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                MaterialButton(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 15),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14),
-                                      side: const BorderSide(
-                                          color: AppColors.c_eeeeee, width: 2)),
-                                  onPressed: () {},
-                                  child: const Icon(
-                                    FontAwesomeIcons.facebookF,
-                                    color: AppColors.c_2d63f8,
-                                  ),
-                                ),
+                                // MaterialButton(
+                                //   padding:
+                                //       const EdgeInsets.symmetric(vertical: 15),
+                                //   shape: RoundedRectangleBorder(
+                                //       borderRadius: BorderRadius.circular(14),
+                                //       side: const BorderSide(
+                                //           color: AppColors.c_eeeeee, width: 2)),
+                                //   onPressed: () {},
+                                //   child: const Icon(
+                                //     FontAwesomeIcons.facebookF,
+                                //     color: AppColors.c_2d63f8,
+                                //   ),
+                                // ),
                                 MaterialButton(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 15),

@@ -109,7 +109,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                       onPressed: () {
-                        Get.to(() => SecondForgotPasswordScreen());
+                        Get.to(() => CheckMailScreen());
                       },
                       child: Text(
                         "send_instructions".tr,

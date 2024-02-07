@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 import 'package:party_wizard/utils/helpers.dart';
 import 'package:party_wizard/widgets/custom_input_field.dart';
 
-class SecondForgotPasswordScreen extends StatelessWidget {
-  const SecondForgotPasswordScreen({super.key});
+class CheckMailScreen extends StatelessWidget {
+  const CheckMailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

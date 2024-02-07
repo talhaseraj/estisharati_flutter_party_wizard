@@ -84,6 +84,7 @@ class OnBoardingScreen extends StatelessWidget {
                 child: Hero(
                   tag: "button",
                   child: MaterialButton(
+                    
                     height: 50,
                     elevation: 0,
                     color: AppColors.primaryColor,

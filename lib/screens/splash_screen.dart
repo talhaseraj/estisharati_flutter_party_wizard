@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:party_wizard/constants/assets.dart';
-import 'package:party_wizard/controllers/splash_screen_controller.dart';
+import 'package:party_wizard/controllers/splash_screen_controlle.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 import '../utils/app_colors.dart';
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    Get.put(StartupController());
+    Get.put(SplashScreenController());
     return Material(
       child: Container(
         height: size.height,

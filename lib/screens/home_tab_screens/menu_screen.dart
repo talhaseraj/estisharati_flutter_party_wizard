@@ -31,30 +31,6 @@ class MenuScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.bgColor,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.zero,
-                fillColor: Colors.white,
-                filled: true,
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: AppColors.c_77838f,
-                ),
-                hintText: "search",
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         height: size.height,
@@ -136,60 +112,66 @@ class MenuScreen extends StatelessWidget {
                 );
               },
             ),
-            ListTile(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
-              leading: SvgPicture.asset(Assets.assetsSvgIconsSettings),
-              tileColor: Colors.white,
-              title: Text(
-                "settings".tr,
-                style: const TextStyle(color: AppColors.c_77838f),
+            if (false)
+              ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14)),
+                leading: SvgPicture.asset(Assets.assetsSvgIconsSettings),
+                tileColor: Colors.white,
+                title: Text(
+                  "settings".tr,
+                  style: const TextStyle(color: AppColors.c_77838f),
+                ),
+                iconColor: AppColors.c_77838f,
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: AppColors.c_77838f,
+                  size: 18,
+                ),
               ),
-              iconColor: AppColors.c_77838f,
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                color: AppColors.c_77838f,
-                size: 18,
-              ),
-            ),
             const SizedBox(
               height: 10,
             ),
-            ListTile(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
-              leading: SvgPicture.asset(Assets.assetsSvgIconsHelpCircle),
-              tileColor: Colors.white,
-              title: Text(
-                "help_center".tr,
-                style: const TextStyle(color: AppColors.c_77838f),
+            if (false)
+              ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14)),
+                leading: SvgPicture.asset(Assets.assetsSvgIconsHelpCircle),
+                tileColor: Colors.white,
+                title: Text(
+                  "help_center".tr,
+                  style: const TextStyle(color: AppColors.c_77838f),
+                ),
+                iconColor: AppColors.c_77838f,
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: AppColors.c_77838f,
+                  size: 18,
+                ),
               ),
-              iconColor: AppColors.c_77838f,
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                color: AppColors.c_77838f,
-                size: 18,
-              ),
-            ),
             const SizedBox(
               height: 10,
             ),
-            ListTile(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
-              leading: SvgPicture.asset(Assets.assetsSvgIconsFeatherInfo),
-              tileColor: Colors.white,
-              title: Text(
-                "about".tr,
-                style: const TextStyle(color: AppColors.c_77838f),
+            if (false)
+              ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14)),
+                leading: SvgPicture.asset(Assets.assetsSvgIconsFeatherInfo),
+                tileColor: Colors.white,
+                title: Text(
+                  "about".tr,
+                  style: const TextStyle(color: AppColors.c_77838f),
+                ),
+                iconColor: AppColors.c_77838f,
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: AppColors.c_77838f,
+                  size: 18,
+                ),
               ),
-              iconColor: AppColors.c_77838f,
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                color: AppColors.c_77838f,
-                size: 18,
-              ),
-            ),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

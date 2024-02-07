@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1081604153788",
+    "project_id": "party-wizard",
+    "storage_bucket": "party-wizard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081604153788:android:39c65ef1d3acfeeb410bb9",
+        "android_client_info": {
+          "package_name": "com.estisharati.partywizard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyfzqL6Q-Wg6aLWD01b5BTangJkkBAcJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

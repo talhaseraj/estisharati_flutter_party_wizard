@@ -70,9 +70,10 @@ class _ShowReviewsWidgetState extends State<ShowReviewsWidget> {
                         fontWeight: FontWeight.w700,
                         fontSize: 14),
                     subtitleTextStyle: const TextStyle(
-                        color: AppColors.c_75787a,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12),
+                      color: AppColors.c_75787a,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 12,
+                    ),
                     title: Row(
                       children: [
                         const Text("Matt"),
