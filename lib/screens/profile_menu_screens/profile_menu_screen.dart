@@ -188,7 +188,7 @@ class ProfileMenuScreen extends StatelessWidget {
           leading: Icon(
             icon,
             size: 35,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
           title: Hero(
             tag: title,
@@ -196,8 +196,8 @@ class ProfileMenuScreen extends StatelessWidget {
               color: Colors.transparent,
               child: Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: Colors.grey.shade800,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -205,7 +205,7 @@ class ProfileMenuScreen extends StatelessWidget {
           ),
           trailing: const Icon(
             Icons.arrow_forward_ios_rounded,
-            color: Colors.black,
+            color: Colors.grey,
           )),
     );
   }

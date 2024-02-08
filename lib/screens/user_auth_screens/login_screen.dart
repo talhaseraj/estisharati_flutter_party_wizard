@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:party_wizard/constants/assets.dart';
 import 'package:party_wizard/controllers/user_auth_controller.dart';
 import 'package:party_wizard/screens/forgot_password_screens/forgot_password_screen.dart';
-import 'package:party_wizard/screens/home_tab_screens/home_tab_screen.dart';
 import 'package:party_wizard/utils/helpers.dart';
 
 import '../../utils/app_colors.dart';
@@ -248,32 +247,49 @@ class LoginScreen extends StatelessWidget {
                                 //     color: AppColors.c_2d63f8,
                                 //   ),
                                 // ),
-                                MaterialButton(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 15),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      side: const BorderSide(
-                                          color: AppColors.c_eeeeee, width: 2)),
-                                  onPressed: () {},
-                                  child: const Icon(
-                                    FontAwesomeIcons.google,
-                                    color: AppColors.primaryColor,
+                                Obx(() => MaterialButton(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 15),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          side: const BorderSide(
+                                              color: AppColors.c_eeeeee,
+                                              width: 2)),
+                                      onPressed: () {
+                                        _.googleSignin();
+                                      },
+                                      child: _.googleLogin.value
+                                          ? const CupertinoActivityIndicator(
+                                              color: AppColors.primaryColor,
+                                            )
+                                          : const Icon(
+                                              FontAwesomeIcons.google,
+                                              color: AppColors.primaryColor,
+                                            ),
+                                    )),
+                                Obx(
+                                  () => MaterialButton(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        side: const BorderSide(
+                                            color: AppColors.c_eeeeee,
+                                            width: 2)),
+                                    onPressed: () {
+                                      _.appleSignin();
+                                    },
+                                    child: _.appleLogin.value
+                                        ? const CupertinoActivityIndicator(
+                                            color: AppColors.primaryColor,
+                                          )
+                                        : const Icon(
+                                            FontAwesomeIcons.apple,
+                                            color: AppColors.c_2a2a2a,
+                                          ),
                                   ),
-                                ),
-                                MaterialButton(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 15),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      side: const BorderSide(
-                                          color: AppColors.c_eeeeee, width: 2)),
-                                  onPressed: () {},
-                                  child: const Icon(
-                                    FontAwesomeIcons.apple,
-                                    color: AppColors.c_2a2a2a,
-                                  ),
-                                ),
+                                )
                               ],
                             ),
                             const SizedBox(

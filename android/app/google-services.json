@@ -12,7 +12,20 @@
           "package_name": "com.estisharati.partywizard"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1081604153788-odlkpsha7p942n5fuain4dm9kl6bq9fm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.estisharati.partywizard",
+            "certificate_hash": "e719082841907f1424539bfb233ab153c012c26c"
+          }
+        },
+        {
+          "client_id": "1081604153788-dptir1h7125mkff3fvhisif56583j8h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDyfzqL6Q-Wg6aLWD01b5BTangJkkBAcJk"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081604153788-dptir1h7125mkff3fvhisif56583j8h4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1081604153788-3eohpfh2a4g7alq7j2gprbm8oltllfbk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.estisharati.partywizard"
+              }
+            }
+          ]
         }
       }
     }
