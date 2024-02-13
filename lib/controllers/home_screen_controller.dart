@@ -192,12 +192,11 @@ class HomeScreenController extends GetxController {
 
   void checkUpdate() async {
     final newVersion = NewVersionPlus(
-        androidId: "com.alzahab.app",
-        iOSId: "com.alzahab",
+        androidId: "com.estisharati.partywizard",
+        iOSId: "com.estisharati.partywizard",
         iOSAppStoreCountry: 'AE');
     final status = await newVersion.getVersionStatus();
-    print("checking update");
-    print(status!.canUpdate);
+
     if (status!.canUpdate == true) {
       newVersion.showUpdateDialog(
         context: Get.context ?? context,
