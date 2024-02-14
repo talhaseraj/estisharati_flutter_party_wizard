@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:party_wizard/controllers/home_screen_controller.dart';
+import 'package:party_wizard/models/all_products_response_model.dart';
 import 'package:party_wizard/screens/product_details_screen.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:collection/collection.dart';
@@ -156,221 +157,70 @@ class HomeScreen extends StatelessWidget {
                       height: size.height,
                       child: RefreshIndicator(
                         onRefresh: () async {
-                          await Future.delayed(const Duration(seconds: 2));
+                          await _.updateData(showShimmer: true);
                         },
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 20,
-                                right: 20,
-                                top: 10,
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.zero,
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  prefixIcon: const Icon(
-                                    Icons.search,
-                                    color: AppColors.c_77838f,
-                                  ),
-                                  hintText: "search".tr,
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(14),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: GridView.builder(
+                        child: NotificationListener<ScrollNotification>(
+                          onNotification: (notification) {
+                            if (notification is ScrollEndNotification &&
+                                notification.metrics.extentAfter == 0 &&
+                                notification.metrics.axis == Axis.vertical) {
+                              _.loadMoreData();
+                            }
+                            return false;
+                          },
+                          child: Column(
+                            children: [
+                              Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 20, left: 20, right: 20),
-                                shrinkWrap: true,
-                                itemCount:
-                                    _.allCategoriesResponse!.data!.length,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  childAspectRatio: 3 / 4.8,
-                                  crossAxisSpacing: 20,
-                                  mainAxisSpacing: 20,
-                                  crossAxisCount: 2,
+                                  left: 20,
+                                  right: 20,
+                                  top: 10,
                                 ),
-                                itemBuilder: (context, index) {
-                                  final productData =
-                                      _.allProductsResponse!.data![index];
-                                  final discount =
-                                      productData.discount != "0.00";
-
-                                  return InkWell(
-                                    onTap: () {
-                                      Get.to(() => ProductDetailsScreen(
-                                            price: 49.00,
-                                            productId: index,
-                                          ));
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(18)),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              discount
-                                                  ? Container(
-                                                      height: 42,
-                                                      width: 42,
-                                                      alignment:
-                                                          Alignment.center,
-                                                      decoration: const BoxDecoration(
-                                                          color: AppColors
-                                                              .c_5965b1,
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          18),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          18))),
-                                                      child: Text(
-                                                        "%${double.parse(productData.discount ?? "").toPrecision(0)}",
-                                                        style: const TextStyle(
-                                                            color: Colors.white,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                    )
-                                                  : const SizedBox.shrink(),
-                                              IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons
-                                                      .favorite_outline_rounded,
-                                                  color: AppColors.c_77838f,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(16),
-                                              child: AspectRatio(
-                                                aspectRatio: 2 / 1.25,
-                                                child: Hero(
-                                                  tag: index,
-                                                  child: CachedNetworkImage(
-                                                    imageUrl:
-                                                        // ignore: unnecessary_string_interpolations
-                                                        "${productData.images!.first}",
-                                                    fit: BoxFit.cover,
-                                                    progressIndicatorBuilder:
-                                                        (context, text,
-                                                            progress) {
-                                                      return const Center(
-                                                          child:
-                                                              CupertinoActivityIndicator());
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Text(
-                                            "${productData.title}",
-                                            style: const TextStyle(
-                                                color: AppColors.c_1e2022,
-                                                fontSize: 14),
-                                          ),
-                                          Column(
-                                            children: [
-                                              Text(
-                                                "${productData.price}",
-                                                style: const TextStyle(
-                                                    color:
-                                                        AppColors.brownishGrey,
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    fontSize: 16),
-                                              ),
-                                              Text(
-                                                "${productData.discountPrice}",
-                                                style: const TextStyle(
-                                                    color:
-                                                        AppColors.primaryColor,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16),
-                                              ),
-                                            ],
-                                          ),
-                                          const Spacer(
-                                            flex: 3,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                const Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.star,
-                                                      color: AppColors.c_fdd546,
-                                                    ),
-                                                    Text(
-                                                      "(4.8)",
-                                                      style: TextStyle(
-                                                          color: AppColors
-                                                              .c_77838f),
-                                                    )
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  width: 35,
-                                                  child: MaterialButton(
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12)),
-                                                    height: 35,
-                                                    padding: EdgeInsets.zero,
-                                                    elevation: 0,
-                                                    color:
-                                                        AppColors.primaryColor,
-                                                    onPressed: () {},
-                                                    child: const Icon(
-                                                      Icons.add,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          const Spacer(),
-                                        ],
-                                      ),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.zero,
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    prefixIcon: const Icon(
+                                      Icons.search,
+                                      color: AppColors.c_77838f,
                                     ),
-                                  );
-                                },
+                                    hintText: "search".tr,
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: GridView.builder(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      _.allCategoriesResponse!.data!.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    childAspectRatio: 3 / 4.8,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 20,
+                                    crossAxisCount: 2,
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    final productData =
+                                        _.allProductsResponse!.data![index];
+                                    final discount =
+                                        productData.discount != "0.00";
+
+                                    return ProductWidget(
+                                        discount: discount,
+                                        productData: productData);
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -550,6 +400,158 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ProductWidget extends StatelessWidget {
+  const ProductWidget({
+    super.key,
+    required this.discount,
+    required this.productData,
+  });
+
+  final bool discount;
+  final Product productData;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Get.to(() => ProductDetailsScreen(
+              price: 49.00,
+              productId: 0,
+            ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(18)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                discount
+                    ? Container(
+                        padding: const EdgeInsets.only(left: 5, right: 5),
+                        height: 42,
+                        // width: 42,
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                            color: AppColors.c_5965b1,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(18),
+                                bottomRight: Radius.circular(18))),
+                        child: Text(
+                          "%${double.parse(productData.discount ?? "").toPrecision(0)}",
+                          style: const TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.favorite_outline_rounded,
+                    color: AppColors.c_77838f,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: AspectRatio(
+                  aspectRatio: 2 / 1.25,
+                  child: Hero(
+                    tag: productData.id ?? "",
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          // ignore: unnecessary_string_interpolations
+                          "${productData.images!.first}",
+                      fit: BoxFit.cover,
+                      progressIndicatorBuilder: (context, text, progress) {
+                        return const Center(
+                            child: CupertinoActivityIndicator());
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${productData.title}",
+                    style: const TextStyle(
+                        color: AppColors.c_1e2022, fontSize: 14),
+                  ),
+                  Text(
+                    "${productData.price}",
+                    style: const TextStyle(
+                        color: AppColors.brownishGrey,
+                        decoration: TextDecoration.lineThrough,
+                        fontSize: 16),
+                  ),
+                  Text(
+                    "${productData.discountPrice}",
+                    style: const TextStyle(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(
+              flex: 3,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: AppColors.c_fdd546,
+                      ),
+                      Text(
+                        "(4.8)",
+                        style: TextStyle(color: AppColors.c_77838f),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    width: 35,
+                    child: MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      height: 35,
+                      padding: EdgeInsets.zero,
+                      elevation: 0,
+                      color: AppColors.primaryColor,
+                      onPressed: () {},
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const Spacer(),
+          ],
+        ),
       ),
     );
   }
