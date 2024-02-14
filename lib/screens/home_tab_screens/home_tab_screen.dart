@@ -38,7 +38,7 @@ class HomeTabScreen extends StatelessWidget {
           controller: pageController.value,
           children: [
             HomeScreen(),
-            const CartScreen(),
+            CartScreen(),
             MenuScreen(),
             const ProfileMenuScreen(),
           ],

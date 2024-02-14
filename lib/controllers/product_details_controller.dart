@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 import '../constants/constants.dart';
 
 import '../models/product_details_response_model.dart';
@@ -135,7 +134,7 @@ class ProductDetailsController extends GetxController
     }
   }
 
-  addToCart({required quantity, required productId}) async {
+  Future addToCart({required quantity, required productId}) async {
     if (addingToCart.value) {
       return;
     }
@@ -157,8 +156,10 @@ class ProductDetailsController extends GetxController
       if (kDebugMode) {
         print(e);
       }
+      return;
     }
     addingToCart(false);
+    return;
   }
 
   addReview(BuildContext context) async {

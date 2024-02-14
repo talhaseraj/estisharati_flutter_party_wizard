@@ -1,14 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:party_wizard/controllers/home_screen_controller.dart';
 import 'package:party_wizard/models/all_products_response_model.dart';
+import 'package:party_wizard/screens/notifications_screen.dart';
 import 'package:party_wizard/screens/product_details_screen.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:collection/collection.dart';
 
 import '../../constants/assets.dart';
+import '../../widgets/more_loading_widget.dart';
 import '../no_internet_screen.dart';
 import '../shimmer.dart';
 
@@ -37,36 +40,22 @@ class HomeScreen extends StatelessWidget {
                       centerTitle: true,
                       backgroundColor: AppColors.bgColor,
                       elevation: 0,
-                      leadingWidth: 60,
-                      leading: InkWell(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () {},
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 20),
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Icon(Icons.menu),
-                        ),
-                      ),
-                      title: Text(
-                        "home".tr,
-                        style: const TextStyle(
-                            color: AppColors.c_212326, fontSize: 16),
-                      ),
+                      leadingWidth: 90,
+                      leading: SvgPicture.asset(Assets.assetsSvgHappyGhost),
                       actions: [
-                        Container(
-                          width: 40,
-                          margin: const EdgeInsets.only(right: 20),
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
+                        InkWell(
+                          onTap: () =>
+                              Get.to(() => const NotificationsScreen()),
+                          child: Container(
+                            width: 40,
+                            margin: const EdgeInsets.only(right: 20),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.notifications),
                           ),
-                          child: const Icon(Icons.notifications),
                         ),
                       ],
                       bottom: PreferredSize(
@@ -88,7 +77,6 @@ class HomeScreen extends StatelessWidget {
                                   shrinkWrap: true,
                                   children: [
                                     SizedBox(
-                                      width: 120,
                                       child: MaterialButton(
                                         elevation: 0,
                                         color: Colors.white,
@@ -214,11 +202,18 @@ class HomeScreen extends StatelessWidget {
                                         productData.discount != "0.00";
 
                                     return ProductWidget(
+                                        addToCart: () async {
+                                          await _.addToCart(
+                                              quantity: 1,
+                                              productId: productData.id);
+                                        },
                                         discount: discount,
                                         productData: productData);
                                   },
                                 ),
                               ),
+                              MoreLoadingWidget(
+                                  isLoadingMore: _.isLoadingMoreData),
                             ],
                           ),
                         ),
@@ -336,11 +331,9 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Expanded(
+                          const Expanded(
                             flex: 2,
-                            child: Hero(
-                                tag: "product$index",
-                                child: const Icon(Icons.image)),
+                            child: Icon(Icons.image),
                           ),
                           const Divider(),
                           Expanded(
@@ -406,22 +399,24 @@ class HomeScreen extends StatelessWidget {
 }
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({
+  ProductWidget({
     super.key,
     required this.discount,
+    required this.addToCart,
     required this.productData,
   });
 
   final bool discount;
+  final Function addToCart;
   final Product productData;
+  final isAddingToCart = false.obs;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Get.to(() => ProductDetailsScreen(
-              price: 49.00,
-              productId: 0,
+              productId: productData.id,
             ));
       },
       child: Container(
@@ -467,18 +462,14 @@ class ProductWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 child: AspectRatio(
                   aspectRatio: 2 / 1.25,
-                  child: Hero(
-                    tag: productData.id ?? "",
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          // ignore: unnecessary_string_interpolations
-                          "${productData.images!.first}",
-                      fit: BoxFit.cover,
-                      progressIndicatorBuilder: (context, text, progress) {
-                        return const Center(
-                            child: CupertinoActivityIndicator());
-                      },
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        // ignore: unnecessary_string_interpolations
+                        "${productData.images!.first}",
+                    fit: BoxFit.cover,
+                    progressIndicatorBuilder: (context, text, progress) {
+                      return const Center(child: CupertinoActivityIndicator());
+                    },
                   ),
                 ),
               ),
@@ -518,33 +509,42 @@ class ProductWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.star,
                         color: AppColors.c_fdd546,
                       ),
                       Text(
-                        "(4.8)",
-                        style: TextStyle(color: AppColors.c_77838f),
+                        "(${productData.rate})",
+                        style: const TextStyle(color: AppColors.c_77838f),
                       )
                     ],
                   ),
                   SizedBox(
                     width: 35,
                     child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                      height: 35,
-                      padding: EdgeInsets.zero,
-                      elevation: 0,
-                      color: AppColors.primaryColor,
-                      onPressed: () {},
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        height: 35,
+                        padding: EdgeInsets.zero,
+                        elevation: 0,
+                        color: AppColors.primaryColor,
+                        onPressed: () async {
+                          isAddingToCart(true);
+                          await addToCart();
+                          isAddingToCart(false);
+                        },
+                        child: Obx(
+                          () => isAddingToCart.value
+                              ? const CupertinoActivityIndicator(
+                                  color: Colors.white,
+                                )
+                              : const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                        )),
                   )
                 ],
               ),
@@ -560,7 +560,6 @@ class ProductWidget extends StatelessWidget {
 Widget categoryWidget(text, onTap, bool selected) {
   return Container(
     margin: const EdgeInsets.only(left: 10),
-    width: 120,
     child: MaterialButton(
       elevation: 0,
       color: Colors.white,

@@ -1,6 +1,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for assetsJsonEmptyCartAnimation
+  /// assets/json/empty_cart_animation.json
+  static const String assetsJsonEmptyCartAnimation = "assets/json/empty_cart_animation.json";
+
   /// Assets for assetsPngBalloons
   /// assets/png/balloons.png
   static const String assetsPngBalloons = "assets/png/balloons.png";

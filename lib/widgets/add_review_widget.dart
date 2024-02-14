@@ -98,7 +98,7 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                     const Divider(
                       color: Colors.transparent,
                     ),
-                    const SeeMoreTextWidget(),
+                     SeeMoreTextWidget(text: "",),
                   ],
                 ),
               ),

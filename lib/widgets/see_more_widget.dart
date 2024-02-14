@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
+import 'package:get/get.dart';
+
+import '../utils/helpers.dart';
 
 class SeeMoreTextWidget extends StatefulWidget {
-  const SeeMoreTextWidget({super.key});
+  final String text;
+  const SeeMoreTextWidget({super.key, required this.text});
 
   @override
   _SeeMoreTextWidgetState createState() => _SeeMoreTextWidgetState();
@@ -18,21 +22,24 @@ class _SeeMoreTextWidgetState extends State<SeeMoreTextWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Maecenas interdum lorem effendi orci aliquam mollis. Aliquam non rhoncus magna. Suspendisse aliquet tincidunt enim, ut commodo elit feugiat et. Maecenas nec enim quis diam faucibus tristique. Nam fermentum, ipsum in suscipit pharetra, mi odio aliquet neque, non iaculis augue elit et libero. Phasellus tempor faucibus faucibus. Sed eu mauris sem. Etiam et varius felis. Donec et libero vitae mauris consectetur egestas. Fusce aliquet, augue non efficitur sodales, turpis nisl consectetur sem, at rutrum lectus libero quis elit. Suspendisse cursus laoreet sapien, in lobortis justo posuere vitae. Aliquam commodo posuere tellus in lacinia. Nullam ac eleifend odio. Donec aliquam semper tellus a condimentum.',
-          style: const TextStyle(color: AppColors.c_77838f, fontSize: 14),
+          Helpers.stripHtmlIfNeeded(widget.text),
+          style: const TextStyle(
+            color: AppColors.brownishGrey,
+            fontSize: 14,
+          ),
           maxLines: _showMoreText ? 3 : null,
           textAlign: TextAlign.justify,
         ),
         GestureDetector(
           onTap: () {
             setState(() {
-              _showMoreText = !_showMoreText;
+              _showMoreText = !_showMoreText; // Toggle visibility
             });
           },
           child: Text(
-            !_showMoreText ? 'See Less' : 'See More',
+            !_showMoreText ? 'see_less'.tr : 'see_more'.tr,
             style: const TextStyle(
-              color: AppColors.primaryColor,
+              color: Colors.blue,
               fontWeight: FontWeight.bold,
             ),
           ),

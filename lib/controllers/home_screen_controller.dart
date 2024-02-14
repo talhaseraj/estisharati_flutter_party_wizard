@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:new_version_plus/new_version_plus.dart';
 
+import '../constants/constants.dart';
 import '../constants/urls.dart';
 import '../models/all_cateogories_model.dart';
 import '../models/all_products_response_model.dart';
@@ -15,7 +16,8 @@ import '../utils/helpers.dart';
 class HomeScreenController extends GetxController {
   final BuildContext context;
   HomeScreenController(this.context);
-  var isLoading = true.obs;
+  var isLoading = true.obs, addingToCart = false.obs;
+
   var isLoadingMoreData = false.obs;
   var isUpdating = false.obs;
   var isBgUpdate = false.obs;
@@ -208,5 +210,33 @@ class HomeScreenController extends GetxController {
             "Please update the app from ${status.localVersion} to ${status.storeVersion}",
       );
     }
+  }
+
+  Future addToCart({required quantity, required productId}) async {
+    if (addingToCart.value) {
+      return;
+    }
+    addingToCart(true);
+    try {
+      final res = await ProductServices.addToCart(
+          isIncrement: 1,
+          quantity: quantity,
+          productId: productId,
+          token: box.read(
+            Constants.accessToken,
+          ));
+      if (res.status == 200) {
+        Get.snackbar("product".tr, "added_to_cart_successfully".tr);
+      } else if (res.status == 401) {
+        Get.snackbar("product".tr, "stock_not_sufficient".tr);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      return;
+    }
+    addingToCart(false);
+    return;
   }
 }

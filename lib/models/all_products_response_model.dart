@@ -86,6 +86,7 @@ class Product {
   String? discount;
   String? categoryId;
   String? photo;
+  String? rate;
   DateTime? createdAt;
   DateTime? updatedAt;
   List<String>? images;
@@ -101,6 +102,7 @@ class Product {
     this.discount,
     this.categoryId,
     this.photo,
+    this.rate,
     this.createdAt,
     this.updatedAt,
     this.images,
@@ -113,6 +115,7 @@ class Product {
         stock: json["stock"],
         price: json["price"],
         currency: json["currency"],
+        rate: json["rate"],
         discountPrice: json["discount_price"],
         discount: json["discount"],
         categoryId: json["category_id"],

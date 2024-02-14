@@ -22,6 +22,7 @@ class CartScreenController extends GetxController {
       decrement = false.obs,
       addingOrder = false.obs,
       isBgUpdating = false.obs,
+      addingToCart = false.obs,
       box = GetStorage(),
       checkOutFormKey = GlobalKey<FormState>();
 
@@ -204,5 +205,70 @@ class CartScreenController extends GetxController {
       }
     }
     addingOrder(false);
+  }
+
+  Future addToCart({required quantity, required productId}) async {
+    if (addingToCart.value) {
+      return;
+    }
+    addingToCart(true);
+    try {
+      final res = await ProductServices.addToCart(
+          isIncrement: 1,
+          quantity: quantity,
+          productId: productId,
+          token: box.read(
+            Constants.accessToken,
+          ));
+      if (res.status == 200) {
+        addingToCart(false);
+
+        return true;
+      } else if (res.status == 401) {
+        addingToCart(false);
+
+        return false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      addingToCart(false);
+
+      return false;
+    }
+    addingToCart(false);
+    return false;
+  }
+
+  Future decrementCart({required quantity, required productId}) async {
+    if (decrement.value) {
+      return;
+    }
+    decrement(true);
+    try {
+      final res = await ProductServices.addToCart(
+          isIncrement: 0,
+          quantity: quantity,
+          productId: productId,
+          token: box.read(
+            Constants.accessToken,
+          ));
+      if (res.status == 200) {
+        decrement(false);
+
+        return true;
+      } else if (res.status == 401) {}
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      decrement(false);
+
+      return false;
+    }
+
+    decrement(false);
+    return false;
   }
 }
