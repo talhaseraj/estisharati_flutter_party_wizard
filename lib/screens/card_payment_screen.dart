@@ -196,36 +196,27 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             height: 60,
-            child: InkWell(
-              onTap: () {
+            child: MaterialButton(
+              onPressed: () {
                 _.cardPay();
               },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.0),
-                  // Same as the button's shape
-                  gradient: const LinearGradient(
-                    colors: [AppColors.primaryColor, AppColors.secondaryBlueColor],
-                    // Define your gradient colors
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                ),
-                child: Center(
-                  child: Obx(
-                    () => Center(
-                      child: _.paymentProcessing.value
-                          ? const CupertinoActivityIndicator(
-                              color: Colors.white,
-                            )
-                          : Text(
-                              'pay'.tr,
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                    ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusDirectional.circular(16)),
+              color: AppColors.primaryColor,
+              child: Center(
+                child: Obx(
+                  () => Center(
+                    child: _.paymentProcessing.value
+                        ? const CupertinoActivityIndicator(
+                            color: Colors.white,
+                          )
+                        : Text(
+                            'pay'.tr,
+                            style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900),
+                          ),
                   ),
                 ),
               ),

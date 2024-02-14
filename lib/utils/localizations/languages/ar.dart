@@ -180,5 +180,113 @@ const Map<String, String> ar = {
   "removed_from_favorite_successfully": "تمت إزالته من المفضلة بنجاح",
   "added_to_favorite_successfully": "تمت الإضافة إلى المفضلة بنجاح",
   "notifications": "الإشعارات",
-  "no_new_notifications_yet": "لا توجد إشعارات جديدة حتى الآن"
+  "no_new_notifications_yet": "لا توجد إشعارات جديدة حتى الآن",
+  "pay": "الدفع",
+  "card_number": "رقم البطاقة",
+  "please_enter_a_valid_phone_number": "يرجى إدخال رقم هاتف صحيح",
+
+
+    "order_summary": "ملخص الطلب",
+  "pending payment": "الدفع قيد الانتظار: ",
+  "order_placed": "تم الطلب",
+  "thank_you": "Thank You",
+  "order_number": "رقم الطلب",
+  "your_order_is_placed_":
+      "تم وضع طلبك بنجاح، لتتبع طلبك، انتقل إلى صفحة حالة الطلب.",
+  "continue_shopping": "متابعة التسوق",
+  //order failed screen
+
+  "order_failed": "فشل الطلب",
+  "oops": "عذرًا",
+  "oops_something_went_wrong": "عذرًا! حدث خطأ ما",
+  "your_payment_has_been_declined": "تم رفض دفعتك، يرجى المحاولة مرة أخرى.",
+  "back_to_shopping_cart": "العودة إلى عربة التسوق",
+
+// cart screen
+
+  "you_have_no_saved_items": "ليس لديك عناصر محفوظة",
+// card payment screen
+  "card_payment": "الدفع ببطاقة الائتمان",
+  "billing_address": "عنوان الفوترة",
+
+  "please_fill_card_details": "يرجى ملء تفاصيل البطاقة",
+
+
+  "delete_my_account": "حذف حسابي",
+
+  "otp_sent_successfully": "تم إرسال الرمز بنجاح",
+  "email_not_valid": "البريد الإلكتروني غير صالح",
+  "otp_not_valid": "الرمز غير صالح",
+  "otp_sending_failed": "فشل إرسال الرمز",
+  "password_created_successfully": "تم إنشاء كلمة المرور بنجاح",
+  "password_creation_failed": "فشل إنشاء كلمة المرور",
+  "sort_products_by": "فرز المنتجات حسب",
+  "sort": "ترتيب",
+  "available_in_ios_only": "متاحة في iOS فقط",
+  "payment_failed": "فشل الدفع",
+  // product details screen
+
+  "gender": "الجنس",
+  "purity": "النقاء",
+
+  "no_products_in_this_category": "لا توجد منتجات في هذه الفئة",
+  "please_be_aware_":
+      "يرجى العلم أن حذف حسابك سيؤدي إلى فقدان جميع البيانات والمعلومات المرتبطة بهذا التطبيق بشكل لا رجعة فيه. تأكد من نسخ أي محتوى هام قبل المتابعة.",
+
+  "no_data_place_order_first": "لا توجد بيانات، قم بتقديم الطلب أولاً",
+
+  "press_ok_to_close_the_application": "اضغط على موافق لإغلاق التطبيق",
+
+  "please_login_to_continue": "الرجاء تسجيل الدخول للمتابعة!",
+  "if_you_dont_have_account_":
+      "إذا لم يكن لديك حساب، يمكنك التسجيل؛ سيستغرق ثوانٍ فقط.",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "shipped": "تم الشحن: ",
+  "processing": "قيد التنفيذ: ",
+  "cancelled": "تم الإلغاء: ",
+
+  "no_saved_items": "لا توجد عناصر محفوظة",
+  "lets_find_some_products_you_like": "لنجد بعض المنتجات التي تعجبك",
+ 
+  "trending": "الشائع",
+  "newest": "الأحدث",
+
+  "enter_the_email_associated_with_":
+      "أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل بريدًا إلكترونيًا يحتوي على تعليمات لإعادة تعيين كلمة المرور.",
+  "we_have_sent_a_":
+      "We have sent a password recover instructions to your email.",
+
+  "enter_verification_code": "أدخل رمز التحقق",
+  "please_enter_verification_code_": "الرجاء كتابة رمز التحقق المرسل إلى",
+  "resend_my_code": "إعادة إرسال رمزي",
+  "your_new_password_must_be_":
+      "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمات المرور السابقة المستخدمة.",
+
+  "discount": "خصم",
+  "user_not_found": "المستخدم غير موجود",
+  "please_enter_a_phone_number": "الرجاء إدخال رقم الهاتف",
+
+  "email_or_phone_already_registered":
+      "البريد الإلكتروني أو رقم الهاتف مسجل بالفعل",
+  "try_again_later": "حاول مرة أخرى لاحقًا",
+  "please_check_your_internet_connection": "يرجى التحقق من اتصالك بالإنترنت",
+  "try_again": "حاول مرة أخرى",
+
+  "review_added": "تمت إضافة المراجعة",
+  "first_name": "الاسم الأول",
+  "last_name": "الاسم الأخير",
+ 
 };

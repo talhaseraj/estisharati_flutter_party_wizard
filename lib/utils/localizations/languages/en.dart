@@ -182,5 +182,101 @@ const Map<String, String> en = {
   "removed_from_favorite_successfully": "Removed from favorite successfully",
   "added_to_favorite_successfully": "Added to favorite successfully",
   "notifications": "Notifications",
-  "no_new_notifications_yet": "No new notifications yet"
+  "no_new_notifications_yet": "No new notifications yet",
+  "pay": "Pay",
+  "card_number": "Card number",
+  "please_enter_a_valid_phone_number": "Please enter a valid phone number",
+  "order_placed": "Order Placed",
+  "thank_you": "Thank You",
+  "order_number": "Order Number",
+  "your_order_is_placed_":
+      "Your order is placed successfully, to track your ordergo to order status page.",
+  "continue_shopping": "Continue Shopping",
+
+  "shipped": "Shipped: ",
+  "processing": "Processing: ",
+  "cancelled": "Cancelled: ",
+
+  // saved items screen
+  "no_saved_items": "No saved items",
+  "lets_find_some_products_you_like": "let's find some products you like",
+
+  "trending": "Trending",
+  "newest": "Newest",
+
+  "enter_the_email_associated_with_":
+      "Enter the email associated with your account and we'll send an email with instructions to reset your password.",
+
+  "we_have_sent_a_":
+      "We have sent a password recover instructions to your email.",
+
+  "enter_verification_code": "Enter Verification Code",
+  "please_enter_verification_code_":
+      "Please type the verification code sent to",
+  "resend_my_code": "Resend My Code",
+
+  "your_new_password_must_be_":
+      "Your new password must be different from previous used passwords.",
+
+  "discount": "Discount",
+
+  "user_not_found": "User not found",
+  "please_enter_a_phone_number": "Please enter a phone number",
+  "email_or_phone_already_registered": "Email or phone already registered",
+  "try_again_later": "Try again later",
+  "please_check_your_internet_connection":
+      "Please check your internet connection",
+  "try_again": "Try Again",
+
+  "review_added": "Review Added",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "order_summary": "Order Summary",
+  "pending payment": "Payment Pending: ",
+  // order placed screen
+  //order failed screen
+  "order_failed": "Order Failed",
+  "oops": "Oops",
+  "oops_something_went_wrong": "Oops! something went wrong",
+  "your_payment_has_been_declined_":
+      "Your payment has been declined please try again.",
+  "back_to_shopping_cart": "Back to shopping cart",
+
+  //cart screen
+
+  "you_have_no_saved_items": "You have no saved items",
+
+  //card payment screen
+  "card_payment": "Card Payment",
+  "billing_address": "Billing Address",
+  "please_fill_card_details": "Please fill card details",
+
+  "delete_my_account": "Delete my account",
+
+  //reset password
+  "otp_sent_successfully": "OTP Sent Successfully",
+  "email_not_valid": "Email not valid",
+  "otp_not_valid": "OTP Not Valid",
+  "otp_sending_failed": "OTP Sending Failed",
+  "password_created_successfully": "Password Created Successfully",
+  "password_creation_failed": "Password Creation Failed",
+  "please_login_to_continue": "Please login to continue!",
+  "if_you_dont_have_account_":
+      "If you don't have an account you can sign up, it will take just seconds.",
+
+  "sort_products_by": "Sort Products By",
+  "sort": "Sort",
+  "available_in_ios_only": "Availabe in ios only",
+  "payment_failed": "Payment Failed",
+
+  // product details screen
+
+  "gender": "Gender",
+  "purity": "Purity",
+
+  "no_products_in_this_category": "No products in this category",
+  "please_be_aware_":
+      "Please be aware that deleting your account will result in the irreversible loss of all your data and information associated with this application. Ensure you have backed up any important content before proceeding.",
+  "no_data_place_order_first": "No Data Place Order First",
+  "press_ok_to_close_the_application": "Press ok to close the application",
 };

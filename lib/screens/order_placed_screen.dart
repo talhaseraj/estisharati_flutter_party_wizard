@@ -27,14 +27,17 @@ class OrderPlacedScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(Assets.assetsSvgDoneRound),
+            SvgPicture.asset(
+              Assets.assetsSvgDoneRound,
+              color: AppColors.primaryColor,
+            ),
             const SizedBox(
               height: 10,
             ),
             Text(
               "${"thank_you".tr}!",
               style: const TextStyle(
-                  color: AppColors.beige,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 16),
             ),
@@ -55,42 +58,30 @@ class OrderPlacedScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: SafeArea(
-        child: SizedBox(
-          height: 80,
-          child: InkWell(
-            onTap: () {
+        child: Container(
+          margin: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            bottom: 20,
+          ),
+          height: 60,
+          child: MaterialButton(
+            elevation: 0,
+            color: AppColors.primaryColor,
+            onPressed: () {
               Get.offAll(() => HomeTabScreen());
             },
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
             child: Hero(
               tag: "button",
-              child: Material(
-                color: Colors.transparent,
-                child: Container(
-                  margin: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                    bottom: 20,
-                  ),
-                  height: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    // Same as the button's shape
-                    gradient: const LinearGradient(
-                      colors: [AppColors.c_ecc89c, AppColors.c_76644e],
-                      // Define your gradient colors
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'continue_shopping'.tr,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+              child: Center(
+                child: Text(
+                  'continue_shopping'.tr,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),

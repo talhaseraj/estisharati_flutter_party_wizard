@@ -333,13 +333,17 @@ class CheckoutScreen extends StatelessWidget {
                             color: AppColors.primaryColor,
                             onPressed: () => _.payNow(context),
                             child: Center(
-                              child: Text(
-                                "pay_now".tr,
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w900),
-                              ),
+                              child: Obx(() => _.addingOrder.value
+                                  ? const CupertinoActivityIndicator(
+                                      color: Colors.white,
+                                    )
+                                  : Text(
+                                      "pay_now".tr,
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w900),
+                                    )),
                             ),
                           ),
                         ),
