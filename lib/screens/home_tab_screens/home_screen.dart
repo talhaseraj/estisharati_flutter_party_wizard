@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:party_wizard/controllers/home_screen_controller.dart';
 import 'package:party_wizard/models/all_products_response_model.dart';
 import 'package:party_wizard/screens/notifications_screen.dart';
@@ -11,6 +12,8 @@ import 'package:party_wizard/utils/app_colors.dart';
 import 'package:collection/collection.dart';
 
 import '../../constants/assets.dart';
+import '../../constants/constants.dart';
+import '../../widgets/login_popup.dart';
 import '../../widgets/more_loading_widget.dart';
 import '../no_internet_screen.dart';
 import '../shimmer.dart';
@@ -410,11 +413,16 @@ class ProductWidget extends StatelessWidget {
   final Function addToCart;
   final Product productData;
   final isAddingToCart = false.obs;
+  final box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        if (box.read(Constants.accessToken) == null) {
+          loginDialog(context);
+          return;
+        }
         Get.to(() => ProductDetailsScreen(
               productId: productData.id,
             ));

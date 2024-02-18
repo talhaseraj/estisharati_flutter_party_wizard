@@ -5,8 +5,8 @@ import 'package:party_wizard/utils/app_colors.dart';
 
 import '../../constants/assets.dart';
 
-class MenuScreen extends StatelessWidget {
-  MenuScreen({super.key});
+class CategoryMenuScreen extends StatelessWidget {
+  CategoryMenuScreen({super.key});
 
   final assets = [
     Assets.assetsPngPartyCaps,

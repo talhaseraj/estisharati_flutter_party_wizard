@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:party_wizard/constants/assets.dart';
+import 'package:party_wizard/controllers/home_tab_screen_controller.dart';
 import 'package:party_wizard/screens/user_auth_screens/login_screen.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 import '../../utils/app_colors.dart';
+import '../home_tab_screens/home_tab_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -68,7 +70,9 @@ class OnBoardingScreen extends StatelessWidget {
                   color: AppColors.c_f9f9fb,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(HomeTabScreen());
+                  },
                   child: Text(
                     "skip".tr,
                     style: const TextStyle(
@@ -84,7 +88,6 @@ class OnBoardingScreen extends StatelessWidget {
                 child: Hero(
                   tag: "button",
                   child: MaterialButton(
-                    
                     height: 50,
                     elevation: 0,
                     color: AppColors.primaryColor,

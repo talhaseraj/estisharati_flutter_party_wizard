@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:party_wizard/screens/404_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/cart_screen.dart';
 import 'package:party_wizard/screens/home_tab_screens/home_screen.dart';
@@ -12,8 +13,12 @@ import 'package:party_wizard/screens/profile_menu_screens/profile_menu_screen.da
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:collection/collection.dart';
 
+import '../../constants/constants.dart';
+import '../../widgets/login_popup.dart';
+
 class HomeTabScreen extends StatelessWidget {
   HomeTabScreen({super.key});
+  final box = GetStorage();
   final pageController = PageController(
     initialPage: 0,
   ).obs;
@@ -39,7 +44,7 @@ class HomeTabScreen extends StatelessWidget {
           children: [
             HomeScreen(),
             CartScreen(),
-            MenuScreen(),
+            CategoryMenuScreen(),
             const ProfileMenuScreen(),
           ],
         ),
@@ -65,6 +70,12 @@ class HomeTabScreen extends StatelessWidget {
                           selected: currentIndex.value == index,
                           icon: icon,
                           onTap: () {
+                            if (index == 1 || index == 3) {
+                              if (box.read(Constants.accessToken) == null) {
+                                loginDialog(context);
+                                return;
+                              }
+                            }
                             pageController.value.jumpToPage(index);
                             currentIndex(index);
                           }),
