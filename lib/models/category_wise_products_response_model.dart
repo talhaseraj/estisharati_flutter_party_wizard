@@ -4,12 +4,14 @@
 
 import 'dart:convert';
 
+import 'package:party_wizard/models/all_products_response_model.dart';
+
 CategoryWiseProductsResponse categoryWiseProductsResponseFromJson(String str) =>
     CategoryWiseProductsResponse.fromJson(json.decode(str));
 
 class CategoryWiseProductsResponse {
   int? currentPage;
-  List<Datum>? data;
+  List<Product>? data;
   String? firstPageUrl;
   int? from;
   int? lastPage;
@@ -41,7 +43,7 @@ class CategoryWiseProductsResponse {
   factory CategoryWiseProductsResponse.fromJson(Map<String, dynamic> json) =>
       CategoryWiseProductsResponse(
         currentPage: json["current_page"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<Product>.from(json["data"].map((x) => Product.fromJson(x))),
         firstPageUrl: json["first_page_url"],
         from: json["from"],
         lastPage: json["last_page"],
@@ -53,48 +55,6 @@ class CategoryWiseProductsResponse {
         prevPageUrl: json["prev_page_url"],
         to: json["to"],
         total: json["total"],
-      );
-}
-
-class Datum {
-  int? id;
-  String? title;
-  String? stock;
-  String? price;
-  String? discount;
-  String? currency;
-  String? discountPrice;
-  String? categoryId;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  List<String>? images;
-
-  Datum({
-    this.id,
-    this.title,
-    this.stock,
-    this.currency,
-    this.price,
-    this.discountPrice,
-    this.discount,
-    this.categoryId,
-    this.createdAt,
-    this.updatedAt,
-    this.images,
-  });
-
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json["id"],
-        title: json["title"],
-        stock: json["stock"],
-        price: json["price"],
-        discountPrice: json["discount_price"],
-        discount: json["discount"],
-        currency: json["currency"],
-        categoryId: json["category_id"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        images: List<String>.from(json["images"].map((x) => x)),
       );
 }
 

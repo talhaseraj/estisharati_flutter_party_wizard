@@ -279,4 +279,5 @@ const Map<String, String> en = {
       "Please be aware that deleting your account will result in the irreversible loss of all your data and information associated with this application. Ensure you have backed up any important content before proceeding.",
   "no_data_place_order_first": "No Data Place Order First",
   "press_ok_to_close_the_application": "Press ok to close the application",
+  "no_products_available_right_now":"No products available right now",
 };

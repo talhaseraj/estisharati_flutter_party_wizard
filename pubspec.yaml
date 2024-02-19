@@ -57,6 +57,8 @@ dependencies:
   webview_flutter: ^4.5.0
   awesome_dialog: ^3.2.0
   lottie: ^3.0.0
+  carousel_slider: ^4.2.1
+
 
 
 

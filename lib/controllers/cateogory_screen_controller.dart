@@ -151,12 +151,11 @@ class CategoryScreenController extends GetxController {
     }
     try {
       final res = await ProductServices.catergoryWiseProducts(
-          categoryId: categoryId,
-          subCategoryId: selectedSubCategoryId.value == 0
-              ? ""
-              : selectedSubCategoryId.value,
-          page: page,
-          sort: sortTypeList[selectedSortId.value]);
+        categoryId: categoryId,
+        subCategoryId:
+            selectedSubCategoryId.value == 0 ? "" : selectedSubCategoryId.value,
+        page: page,
+      );
       categoryWiseProductsResponse = categoryWiseProductsResponseFromJson(res);
       box.write("category$categoryId", res);
     } catch (e) {
@@ -175,7 +174,6 @@ class CategoryScreenController extends GetxController {
           await ProductServices.catergoryWiseProducts(
         subCategoryId: selectedSubCategoryId.value,
         categoryId: categoryId,
-        sort: sortTypeList[selectedSortId.value],
         page: page,
       ));
       categoryWiseProductsResponse!.nextPageUrl = res.nextPageUrl;

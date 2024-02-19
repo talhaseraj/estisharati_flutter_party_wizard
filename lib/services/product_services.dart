@@ -34,23 +34,25 @@ class ProductServices {
     return response.body;
   }
 
-  static Future<String> catergoryWiseProducts(
-      {required categoryId,
-      required subCategoryId,
-      required page,
-      required sort}) async {
+  static Future<String> catergoryWiseProducts({
+    required categoryId,
+    required subCategoryId,
+    required page,
+  }) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse("${Urls.categoryProductsUrl}?page=$page"));
-    request.fields.addAll({
+    final params = {
       'category_id': "$categoryId",
       'subcategory_id': "$subCategoryId",
-      "sort": "$sort"
-    });
+      // "sort": "$sort"
+    };
+    request.fields.addAll(params);
 
     http.StreamedResponse response = await request.send();
     final body = await response.stream.bytesToString();
     if (kDebugMode) {
       print("catergoryWiseProducts url ${Urls.categoryProductsUrl}?page=$page");
+      print("catergoryWiseProducts params $params");
       print("catergoryWiseProducts response $body");
     }
     return body;

@@ -185,8 +185,7 @@ const Map<String, String> ar = {
   "card_number": "رقم البطاقة",
   "please_enter_a_valid_phone_number": "يرجى إدخال رقم هاتف صحيح",
 
-
-    "order_summary": "ملخص الطلب",
+  "order_summary": "ملخص الطلب",
   "pending payment": "الدفع قيد الانتظار: ",
   "order_placed": "تم الطلب",
   "thank_you": "Thank You",
@@ -210,7 +209,6 @@ const Map<String, String> ar = {
   "billing_address": "عنوان الفوترة",
 
   "please_fill_card_details": "يرجى ملء تفاصيل البطاقة",
-
 
   "delete_my_account": "حذف حسابي",
 
@@ -241,26 +239,13 @@ const Map<String, String> ar = {
   "if_you_dont_have_account_":
       "إذا لم يكن لديك حساب، يمكنك التسجيل؛ سيستغرق ثوانٍ فقط.",
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   "shipped": "تم الشحن: ",
   "processing": "قيد التنفيذ: ",
   "cancelled": "تم الإلغاء: ",
 
   "no_saved_items": "لا توجد عناصر محفوظة",
   "lets_find_some_products_you_like": "لنجد بعض المنتجات التي تعجبك",
- 
+
   "trending": "الشائع",
   "newest": "الأحدث",
 
@@ -288,5 +273,5 @@ const Map<String, String> ar = {
   "review_added": "تمت إضافة المراجعة",
   "first_name": "الاسم الأول",
   "last_name": "الاسم الأخير",
- 
+  "no_products_available_right_now": "لا تتوفر منتجات في الوقت الحالي",
 };
