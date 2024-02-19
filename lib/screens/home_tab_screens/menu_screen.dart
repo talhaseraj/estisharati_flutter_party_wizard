@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 
 import '../../constants/assets.dart';
+import '../../constants/theme.dart';
 
 class CategoryMenuScreen extends StatelessWidget {
   CategoryMenuScreen({super.key});
@@ -57,9 +58,9 @@ class CategoryMenuScreen extends StatelessWidget {
                   aspectRatio: 190 / 150,
                   child: Container(
                     padding: const EdgeInsets.only(left: 8, right: 8),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: CustomTheme.borderRadius),
                     child: Stack(
                       children: [
                         Align(
