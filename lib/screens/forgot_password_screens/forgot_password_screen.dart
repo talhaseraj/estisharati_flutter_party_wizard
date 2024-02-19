@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:party_wizard/constants/assets.dart';
+import 'package:party_wizard/constants/theme.dart';
 import 'package:party_wizard/controllers/forgot_password_controller.dart';
 import 'package:party_wizard/screens/forgot_password_screens/second_forgot_password_screen.dart';
 
@@ -104,12 +105,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                   child: Hero(
                     tag: "button",
                     child: MaterialButton(
-                      height: 50,
+                      elevation: 0,
+                      height: 60,
                       color: AppColors.primaryColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: CustomTheme.borderRadius),
                       onPressed: () {
-                        Get.to(() => CheckMailScreen());
+                        Get.to(() => const CheckMailScreen());
                       },
                       child: Text(
                         "send_instructions".tr,

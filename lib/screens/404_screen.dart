@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:party_wizard/constants/assets.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 
+import '../constants/theme.dart';
+
 class Screen404 extends StatelessWidget {
   const Screen404({super.key});
 
@@ -60,8 +62,8 @@ class Screen404 extends StatelessWidget {
           child: MaterialButton(
             elevation: 0,
             onPressed: () {},
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+            shape: const RoundedRectangleBorder(
+                borderRadius: CustomTheme.borderRadius),
             color: AppColors.primaryColor,
             child: Text(
               "back_home".tr,

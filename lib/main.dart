@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:party_wizard/constants/theme.dart';
 import 'package:party_wizard/screens/splash_screen.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:get/get.dart';
@@ -44,15 +45,15 @@ class MyApp extends StatelessWidget {
             const TextSelectionThemeData(cursorColor: AppColors.primaryColor),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: CustomTheme.borderRadius,
             borderSide: const BorderSide(color: AppColors.c_c4c4c4),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: CustomTheme.borderRadius,
             borderSide: const BorderSide(color: AppColors.c_c4c4c4),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: CustomTheme.borderRadius,
             borderSide: const BorderSide(color: AppColors.primaryColor),
           ),
         ),

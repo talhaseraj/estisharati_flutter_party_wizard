@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/app_colors.dart';
+import '../../../constants/theme.dart';
 
 class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});
@@ -26,7 +27,7 @@ class FaqScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: size.width * .05),
         child: RefreshIndicator(
           color: AppColors.primaryColor,
-          onRefresh: ()async{
+          onRefresh: () async {
             await Future.delayed(const Duration(seconds: 2));
             return;
           },
@@ -59,7 +60,7 @@ class FaqScreen extends StatelessWidget {
 
   Widget faqExpensionTile(title, body, Size size) {
     final expansionTileShape = RoundedRectangleBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderRadius: CustomTheme.borderRadius,
         side: BorderSide(width: 1, color: Colors.grey.shade300));
     return ExpansionTile(
       shape: expansionTileShape,

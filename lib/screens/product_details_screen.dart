@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
+import 'package:collection/collection.dart';
 import 'package:party_wizard/utils/app_colors.dart';
 import 'package:party_wizard/widgets/rating_star_row_widget.dart';
 import 'package:party_wizard/widgets/see_more_widget.dart';
@@ -13,7 +14,6 @@ import 'package:progress_indicators/progress_indicators.dart';
 import '../controllers/product_details_controller.dart';
 import 'no_internet_screen.dart';
 import 'shimmer.dart';
-import 'package:collection/collection.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final productId;
@@ -81,9 +81,12 @@ class ProductDetailsScreen extends StatelessWidget {
                                               elevation: 0,
                                               color: Colors.white,
                                               shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(10),
+                                                  bottomRight:
+                                                      Radius.circular(18),
+                                                ),
+                                              ),
                                               onPressed: () {
                                                 Get.back();
                                               },
@@ -411,8 +414,12 @@ class ProductDetailsScreen extends StatelessWidget {
                               width: double.infinity,
                               child: MaterialButton(
                                 elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18)),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(18),
+                                    bottomRight: Radius.circular(18),
+                                  ),
+                                ),
                                 color: AppColors.primaryColor,
                                 height: 60,
                                 onPressed: () {

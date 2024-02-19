@@ -68,14 +68,14 @@ class _CustomInputFieldState extends State<CustomInputField> {
                         ? Icons.visibility_off_outlined
                         : Icons.visibility_outlined))
                 : const SizedBox.shrink(),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.c_eeeeee, width: 2),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.red, width: 5),
-              borderRadius: BorderRadius.circular(14),
-            ),
+            // enabledBorder: OutlineInputBorder(
+            //   borderSide: const BorderSide(color: AppColors.c_eeeeee, width: 2),
+            //   borderRadius: BorderRadius.circular(14),
+            // ),
+            // border: OutlineInputBorder(
+            //   borderSide: const BorderSide(color: Colors.red, width: 5),
+            //   borderRadius: BorderRadius.circular(14),
+            // ),
           ),
         ),
       ),

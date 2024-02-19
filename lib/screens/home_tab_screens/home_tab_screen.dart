@@ -56,7 +56,7 @@ class HomeTabScreen extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0), // Adjust the radius as needed
-            topRight: Radius.circular(30.0), // Adjust the radius as needed
+            // Adjust the radius as needed
           ),
         ),
         child: Obx(
@@ -111,8 +111,12 @@ class BottomBarItemCustom extends StatelessWidget {
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            color: selected ? AppColors.primaryColor : Colors.transparent,
-            borderRadius: BorderRadius.circular(18)),
+          color: selected ? AppColors.primaryColor : Colors.transparent,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(18),
+            bottomRight: Radius.circular(18),
+          ),
+        ),
         child: Icon(
           icon,
           size: 30,

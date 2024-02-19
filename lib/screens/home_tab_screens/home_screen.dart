@@ -14,6 +14,7 @@ import 'package:collection/collection.dart';
 
 import '../../constants/assets.dart';
 import '../../constants/constants.dart';
+import '../../constants/theme.dart';
 import '../../widgets/login_popup.dart';
 import '../../widgets/more_loading_widget.dart';
 import '../../widgets/product_widget.dart';
@@ -56,9 +57,9 @@ class HomeScreen extends StatelessWidget {
                             width: 40,
                             margin: const EdgeInsets.only(right: 20),
                             height: 40,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: CustomTheme.borderRadius,
                             ),
                             child: const Icon(Icons.notifications),
                           ),
@@ -91,9 +92,9 @@ class HomeScreen extends StatelessWidget {
                                         },
                                         height: 45,
                                         // width: 120,
-                                        shape: RoundedRectangleBorder(
+                                        shape: const RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(18),
+                                              CustomTheme.borderRadius,
                                         ),
 
                                         child: Obx(() => Row(

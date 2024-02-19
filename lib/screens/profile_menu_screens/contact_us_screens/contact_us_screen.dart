@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/app_colors.dart';
+import '../../../constants/theme.dart';
 import '../../../controllers/contactus_screen_controller.dart';
 import '../../../utils/helpers.dart';
 
@@ -97,43 +98,35 @@ class ContactUsScreen extends StatelessWidget {
             ),
             bottomNavigationBar: SafeArea(
               child: Container(
+                height: 60,
                 color: AppColors.bgColor,
-                padding: EdgeInsets.symmetric(horizontal: size.width * .05),
-                child: InkWell(
-                  onTap: () {
-                    _.sendFeedBack();
-                    // Get.to(() => const ContactUsSentScreen());
-                  },
-                  child: Container(
-                    height: size.width * .15,
-                    width: size.width * .75,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      // Same as the button's shape
-                      gradient: const LinearGradient(
-                        colors: [
-                          AppColors.c_ecc89c,
-                          AppColors.c_76644e,
-                        ],
-                        // Define your gradient colors
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                      ),
-                    ),
-                    child: Center(
-                      child: Obx(
-                        () => _.isLoading.value
-                            ? const CupertinoActivityIndicator(
-                                color: Colors.white,
-                              )
-                            : Text(
-                                'send'.tr,
-                                style: TextStyle(
-                                    fontSize: size.width * .06,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                      ),
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 20,
+                ),
+                child: MaterialButton(
+                  elevation: 0,
+                  height: 60,
+                  color: AppColors.primaryColor,
+                  onPressed: () => _.sendFeedBack(),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: CustomTheme.borderRadius,
+                    // Same as the button's shape
+                  ),
+                  child: Center(
+                    child: Obx(
+                      () => _.isLoading.value
+                          ? const CupertinoActivityIndicator(
+                              color: Colors.white,
+                            )
+                          : Text(
+                              'send'.tr,
+                              style: TextStyle(
+                                  fontSize: size.width * .06,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900),
+                            ),
                     ),
                   ),
                 ),

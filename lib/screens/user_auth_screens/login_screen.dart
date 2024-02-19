@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:party_wizard/constants/assets.dart';
+import 'package:party_wizard/constants/theme.dart';
 import 'package:party_wizard/controllers/user_auth_controller.dart';
 import 'package:party_wizard/screens/forgot_password_screens/forgot_password_screen.dart';
 import 'package:party_wizard/utils/helpers.dart';
@@ -188,12 +189,12 @@ class LoginScreen extends StatelessWidget {
                                   child: Hero(
                                     tag: "button",
                                     child: MaterialButton(
-                                      height: 50,
+                                      height: 60,
                                       elevation: 0,
                                       color: AppColors.primaryColor,
-                                      shape: RoundedRectangleBorder(
+                                      shape: const RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                              CustomTheme.borderRadius),
                                       onPressed: () {
                                         if (_.isSignup.value) {
                                           _.signup(context);
@@ -250,10 +251,10 @@ class LoginScreen extends StatelessWidget {
                                 Obx(() => MaterialButton(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 15),
-                                      shape: RoundedRectangleBorder(
+                                      shape: const RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
-                                          side: const BorderSide(
+                                              CustomTheme.borderRadius,
+                                          side: BorderSide(
                                               color: AppColors.c_eeeeee,
                                               width: 2)),
                                       onPressed: () {
@@ -272,9 +273,9 @@ class LoginScreen extends StatelessWidget {
                                   () => MaterialButton(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 15),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                        side: const BorderSide(
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: CustomTheme.borderRadius,
+                                        side: BorderSide(
                                             color: AppColors.c_eeeeee,
                                             width: 2)),
                                     onPressed: () {

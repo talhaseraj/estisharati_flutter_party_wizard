@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import 'package:party_wizard/utils/helpers.dart';
 import 'package:party_wizard/widgets/custom_input_field.dart';
 
+import '../../constants/theme.dart';
+
 class CheckMailScreen extends StatelessWidget {
   const CheckMailScreen({super.key});
 
@@ -89,10 +91,11 @@ class CheckMailScreen extends StatelessWidget {
                 child: Hero(
                   tag: "button",
                   child: MaterialButton(
-                    height: 50,
+                    elevation: 0,
+                    height: 60,
                     color: AppColors.primaryColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: CustomTheme.borderRadius),
                     onPressed: () {
                       Get.to(() => const CreatePasswordScreen());
                     },

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../utils/app_colors.dart';
+import '../../../../constants/theme.dart';
 import '../../../../controllers/report_problem_controller.dart';
 import '../../../../models/report_categories_response_model.dart';
 import 'report_problem_details_screen.dart';
@@ -46,7 +47,7 @@ class ReportProblemCategoryScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: size.width * .05),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: CustomTheme.borderRadius,
                                 border: Border.all(
                                     color: Colors.grey.shade300, width: 1),
                               ),

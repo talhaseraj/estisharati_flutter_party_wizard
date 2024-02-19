@@ -68,8 +68,12 @@ class OnBoardingScreen extends StatelessWidget {
                   height: 50,
                   elevation: 0,
                   color: AppColors.c_f9f9fb,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(18),
+                      bottomRight: Radius.circular(18),
+                    ),
+                  ),
                   onPressed: () {
                     Get.offAll(HomeTabScreen());
                   },
@@ -91,8 +95,12 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 50,
                     elevation: 0,
                     color: AppColors.primaryColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(18),
+                        bottomRight: Radius.circular(18),
+                      ),
+                    ),
                     onPressed: () {
                       Get.to(() => const LoginScreen());
                     },

@@ -208,7 +208,6 @@ class CategoryScreen extends StatelessWidget {
                                               addToCart: () async {
                                                 final HomeScreenController _ =
                                                     Get.find();
-
                                                 await _.addToCart(
                                                     quantity: 1,
                                                     productId: product.id);

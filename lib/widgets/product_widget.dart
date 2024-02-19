@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../constants/constants.dart';
+import '../constants/theme.dart';
 import '../models/all_products_response_model.dart';
 import '../screens/product_details_screen.dart';
 import '../utils/app_colors.dart';
@@ -37,8 +38,8 @@ class ProductWidget extends StatelessWidget {
             ));
       },
       child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(18)),
+        decoration: const BoxDecoration(
+            color: Colors.white, borderRadius: CustomTheme.borderRadius),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,9 +55,7 @@ class ProductWidget extends StatelessWidget {
                         alignment: Alignment.center,
                         decoration: const BoxDecoration(
                             color: AppColors.c_5965b1,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(18),
-                                bottomRight: Radius.circular(18))),
+                            borderRadius: CustomTheme.borderRadius),
                         child: Text(
                           "%${double.parse(productData.discount ?? "").toPrecision(0)}",
                           style: const TextStyle(
@@ -76,7 +75,7 @@ class ProductWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: CustomTheme.borderRadius,
                 child: AspectRatio(
                   aspectRatio: 2 / 1.25,
                   child: CachedNetworkImage(
@@ -141,8 +140,11 @@ class ProductWidget extends StatelessWidget {
                   SizedBox(
                     width: 35,
                     child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12),
+                        )),
                         height: 35,
                         padding: EdgeInsets.zero,
                         elevation: 0,
@@ -183,8 +185,8 @@ Widget categoryWidget(text, onTap, bool selected) {
       onPressed: () => onTap(),
       height: 45,
       // width: 120,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
+      shape: const RoundedRectangleBorder(
+        borderRadius: CustomTheme.borderRadius,
       ),
 
       child: Text(

@@ -8,6 +8,7 @@ import 'package:party_wizard/screens/onboarding_screens/onboarding_screen.dart';
 import 'package:party_wizard/screens/splash_screen.dart';
 
 import '../../constants/constants.dart';
+import '../../constants/theme.dart';
 import '../../constants/urls.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/helpers.dart';
@@ -161,11 +162,11 @@ class ProfileMenuScreen extends StatelessWidget {
               },
               child: Container(
                 margin: EdgeInsets.only(top: size.width * .025),
-                height: size.width * .1,
+                height: 60,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border.all(color: AppColors.c_707070),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: CustomTheme.borderRadius,
                 ),
                 child: Text("logout".tr),
               ),
@@ -182,8 +183,8 @@ class ProfileMenuScreen extends StatelessWidget {
       onTap: () => ontap(),
       child: ListTile(
           tileColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+          shape: const RoundedRectangleBorder(
+            borderRadius: CustomTheme.borderRadius,
           ),
           leading: Icon(
             icon,
