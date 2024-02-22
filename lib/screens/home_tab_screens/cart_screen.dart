@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:party_wizard/constants/theme.dart';
 
 import 'package:party_wizard/controllers/cart_screen_controller.dart';
 import 'package:party_wizard/models/cart_details_response_model.dart';
@@ -133,9 +134,9 @@ class CartScreen extends StatelessWidget {
                               margin: const EdgeInsets.only(bottom: 20),
                               height: 72,
                               alignment: Alignment.center,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: CustomTheme.borderRadius,
                               ),
                               child: Row(
                                 mainAxisAlignment:
@@ -176,27 +177,24 @@ class CartScreen extends StatelessWidget {
                             ? const SizedBox.shrink()
                             : Hero(
                                 tag: "button",
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: MaterialButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
-                                    color: AppColors.primaryColor,
-                                    onPressed: () {
-                                      Get.to(() => const CheckoutScreen());
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'proceed_to_buy_'.trParams({
-                                          "items":
-                                              "${_.cartDetailsResponse!.data!.cartDetails!.length}"
-                                        }),
-                                        style: const TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w900),
-                                      ),
+                                child: MaterialButton(
+                                  elevation: 0,
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: CustomTheme.borderRadius),
+                                  color: AppColors.primaryColor,
+                                  onPressed: () {
+                                    Get.to(() => const CheckoutScreen());
+                                  },
+                                  child: Center(
+                                    child: Text(
+                                      'proceed_to_buy_'.trParams({
+                                        "items":
+                                            "${_.cartDetailsResponse!.data!.cartDetails!.length}"
+                                      }),
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w900),
                                     ),
                                   ),
                                 ),
@@ -306,9 +304,9 @@ class _CartItemsCardState extends State<CartItemsCard> {
         padding: EdgeInsets.all(size.width * .025),
         height: 150,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: CustomTheme.borderRadius,
         ),
         child: Row(
           children: [

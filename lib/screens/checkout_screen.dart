@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:party_wizard/constants/theme.dart';
 
 import '../../../utils/app_colors.dart';
 import '../controllers/cart_screen_controller.dart';
@@ -105,9 +106,9 @@ class CheckoutScreen extends StatelessWidget {
                             height: 10,
                           ),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: CustomTheme.borderRadius),
                             child: Column(
                               children: [
                                 SizedBox(
@@ -170,9 +171,9 @@ class CheckoutScreen extends StatelessWidget {
                             margin: const EdgeInsets.only(bottom: 20),
                             height: 72,
                             alignment: Alignment.center,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: CustomTheme.borderRadius,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -195,9 +196,9 @@ class CheckoutScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: CustomTheme.borderRadius),
                             child: Column(
                               children: [
                                 SizedBox(
@@ -328,8 +329,9 @@ class CheckoutScreen extends StatelessWidget {
                         child: Material(
                           color: Colors.transparent,
                           child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16)),
+                            elevation: 0,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: CustomTheme.borderRadius),
                             color: AppColors.primaryColor,
                             onPressed: () => _.payNow(context),
                             child: Center(
