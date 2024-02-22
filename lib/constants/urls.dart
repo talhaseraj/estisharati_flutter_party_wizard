@@ -54,9 +54,10 @@ class Urls {
   static String subcategoriesUrl = "$baseUrl/subcategories";
   static String reportCategoriesUrl = "$baseUrl/report_categories";
   static String reportMessageUrl = "$baseUrl/report_message";
-  static String aboutUsUrl = "https://alzahab.net/aboutUs";
-  static String privacyPolicyUrl = "https://alzahab.net/privacy-policy";
-  static String termsAndConditionsUrl = "https://alzahab.net/terms-condition";
+  static String aboutUsUrl = "https://partywizard.net/aboutUs";
+  static String privacyPolicyUrl = "https://partywizard.net/privacy-policy";
+  static String termsAndConditionsUrl =
+      "https://partywizard.net/terms-condition";
   static String ordersCreatePaymentIntentUrl =
       "$baseUrl/orders/create-payment-intent";
 
