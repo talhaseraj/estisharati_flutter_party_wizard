@@ -73,14 +73,16 @@ class ProfileMenuScreen extends StatelessWidget {
                 transition: Transition.rightToLeft,
               ),
             ),
-            SizedBox(
-              height: size.width * .025,
-            ),
-            CustomListtile(
-                size: size,
-                icon: Icons.ads_click_rounded,
-                title: "ads".tr,
-                ontap: () {}),
+            if (false)
+              SizedBox(
+                height: size.width * .025,
+              ),
+            if (false)
+              CustomListtile(
+                  size: size,
+                  icon: Icons.ads_click_rounded,
+                  title: "ads".tr,
+                  ontap: () {}),
             const SizedBox(
               height: 10,
             ),

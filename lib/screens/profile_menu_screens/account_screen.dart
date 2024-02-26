@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
+import 'package:party_wizard/constants/theme.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../controllers/account_screen_controller.dart';
@@ -108,15 +108,14 @@ class AccountScreen extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                print("delete my account");
                                 _.deleteMyAccount(context);
                               },
                               child: Container(
-                                height: size.width * .22,
+                                height: 70,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.redAccent),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: CustomTheme.borderRadius,
                                 ),
                                 child: ListTile(
                                     titleAlignment:
@@ -331,25 +330,18 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
                 ),
               ),
               const Spacer(),
-              InkWell(
-                onTap: () {
-                  widget.onSubmit(controller.text);
-                  Navigator.of(context).pop();
-                },
-                child: Container(
-                  margin:
-                      const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                  height: size.width * .15,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    // Same as the button's shape
-                    gradient: const LinearGradient(
-                      colors: [AppColors.c_ecc89c, AppColors.c_76644e],
-                      // Define your gradient colors
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                  ),
+              Container(
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                height: 60,
+                child: MaterialButton(
+                  color: AppColors.primaryColor,
+                  onPressed: () {
+                    widget.onSubmit(controller.text);
+                    Navigator.of(context).pop();
+                  },
+                  elevation: 0,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: CustomTheme.borderRadius),
                   child: Center(
                     child: Text(
                       'save'.tr,

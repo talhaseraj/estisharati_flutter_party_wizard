@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:collection/collection.dart';
+import 'package:party_wizard/constants/theme.dart';
 import 'package:party_wizard/controllers/home_screen_controller.dart';
 
 import '../../constants/assets.dart';
@@ -516,7 +517,7 @@ class SubCategoryWidget extends StatelessWidget {
               color:
                   isSelected ? AppColors.primaryColor : AppColors.brownishGrey,
             ),
-            borderRadius: BorderRadius.circular(8)),
+            borderRadius: CustomTheme.borderRadius),
         child: Text(
           title,
           style: TextStyle(

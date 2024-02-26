@@ -10,7 +10,6 @@ import '../../controllers/order_details_screen_controller.dart';
 import '../shimmer.dart';
 import '../widgets.dart';
 
-
 class OrderDetailsScreen extends StatelessWidget {
   final int orderId;
   OrderDetailsScreen({super.key, required this.orderId});
@@ -151,17 +150,18 @@ class OrderDetailsScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            Obx(() => Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: List.generate(
-                                    _.orderDetailResponse!.data!.products!
-                                            .length ??
-                                        0, // Replace with the actual number of pages
-                                    (index) =>
-                                        buildDot(index == _currentPage.value),
-                                  ),
-                                )),
-                            SizedBox(
+                            if (_.orderDetailResponse!.data!.products!
+                                .isNotEmpty)
+                              Obx(() => Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: List.generate(
+                                      _.orderDetailResponse!.data!.products!
+                                          .length, // Replace with the actual number of pages
+                                      (index) =>
+                                          buildDot(index == _currentPage.value),
+                                    ),
+                                  )),
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
@@ -356,7 +356,7 @@ class OrderDetailsScreen extends StatelessWidget {
                         border: Border.all(color: Colors.grey.shade300),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child:Icon(Icons.abc),
+                      child: Icon(Icons.abc),
                     ),
                     Expanded(
                       child: Padding(

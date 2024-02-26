@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:party_wizard/constants/theme.dart';
 
 import '../../../utils/app_colors.dart';
 
@@ -13,11 +14,11 @@ Widget CustomListtile(
   return GestureDetector(
     onTap: () => ontap(),
     child: Container(
-      height: size.width * .22,
+      height: 90,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: CustomTheme.borderRadius,
       ),
       child: ListTile(
           titleAlignment: ListTileTitleAlignment.center,

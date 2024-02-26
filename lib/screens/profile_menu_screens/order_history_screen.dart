@@ -3,8 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
+import 'package:party_wizard/constants/theme.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/helpers.dart';
@@ -123,11 +122,11 @@ class OrderHistory extends StatelessWidget {
     return InkWell(
       onTap: () => ontap(),
       child: Container(
-        height: size.width * .25,
+        height: 90,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: CustomTheme.borderRadius,
         ),
         child: ListTile(
           titleAlignment: ListTileTitleAlignment.center,
@@ -137,7 +136,7 @@ class OrderHistory extends StatelessWidget {
             height: size.width * .15,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey.shade300),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: CustomTheme.borderRadius,
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),

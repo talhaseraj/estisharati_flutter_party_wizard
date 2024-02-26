@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:party_wizard/constants/theme.dart';
 
 import '../../../utils/app_colors.dart';
 import 'widgets.dart';
@@ -193,33 +194,22 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
             SizedBox(
               height: size.width * .1,
             ),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                height: size.width * .15,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    16.0,
-                  ),
-                  // Same as the button's shape
-                  gradient: const LinearGradient(
-                    colors: [
-                      AppColors.primaryColor,
-                      AppColors.secondaryBlueColor
-                    ],
-                    // Define your gradient colors
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    'save'.tr,
-                    style: TextStyle(
-                        fontSize: size.width * .06,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900),
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              height: 60,
+              child: MaterialButton(
+                minWidth: double.infinity,
+                color: AppColors.primaryColor,
+                elevation: 0,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: CustomTheme.borderRadius),
+                onPressed: () {},
+                child: Text(
+                  'save'.tr,
+                  style: TextStyle(
+                    fontSize: size.width * .06,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),

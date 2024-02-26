@@ -132,7 +132,7 @@ class CartScreen extends StatelessWidget {
                               .isNotEmpty)
                             Container(
                               margin: const EdgeInsets.only(bottom: 20),
-                              height: 72,
+                              height: 60,
                               alignment: Alignment.center,
                               decoration: const BoxDecoration(
                                 color: Colors.white,
@@ -165,7 +165,7 @@ class CartScreen extends StatelessWidget {
               bottomNavigationBar: SafeArea(
                 child: Container(
                   height: 60,
-                  padding: EdgeInsets.only(
+                  margin: EdgeInsets.only(
                     bottom: size.width * .025,
                     left: size.width * .05,
                     right: size.width * .05,
@@ -346,9 +346,9 @@ class _CartItemsCardState extends State<CartItemsCard> {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: AppColors.c_edecf5,
-                              borderRadius: BorderRadius.circular(12)),
+                              borderRadius: CustomTheme.borderRadius),
                           child: Row(
                             children: [
                               SizedBox(
@@ -356,9 +356,7 @@ class _CartItemsCardState extends State<CartItemsCard> {
                                 height: 32,
                                 child: MaterialButton(
                                     shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(14),
-                                      ),
+                                      borderRadius: CustomTheme.borderRadius,
                                     ),
                                     padding: EdgeInsets.zero,
                                     elevation: 0,
@@ -395,8 +393,7 @@ class _CartItemsCardState extends State<CartItemsCard> {
                                 height: 32,
                                 child: MaterialButton(
                                     shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(14))),
+                                        borderRadius: CustomTheme.borderRadius),
                                     padding: EdgeInsets.zero,
                                     elevation: 0,
                                     color: AppColors.c_222e6a,
