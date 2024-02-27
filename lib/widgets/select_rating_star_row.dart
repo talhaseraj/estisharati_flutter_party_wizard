@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
 class SelectRatingStarRow extends StatefulWidget {
+  final Function(int) onChanged;
+  const SelectRatingStarRow({super.key, required this.onChanged});
+
   @override
-  _SelectRatingStarRowState createState() => _SelectRatingStarRowState();
+  State<SelectRatingStarRow> createState() => _SelectRatingStarRowState();
 }
 
 class _SelectRatingStarRowState extends State<SelectRatingStarRow> {
-  int rating = 0;
+  int rating = 1;
 
   void changeRating(int newRating) {
     setState(() {
       rating = newRating;
     });
+
+    widget.onChanged(newRating);
   }
 
   @override

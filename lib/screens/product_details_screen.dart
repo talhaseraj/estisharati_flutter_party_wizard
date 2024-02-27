@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
 import 'package:collection/collection.dart';
@@ -80,7 +79,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                               padding: EdgeInsets.zero,
                                               elevation: 0,
                                               color: Colors.white,
-                                              shape: RoundedRectangleBorder(
+                                              shape: const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
                                                   topLeft: Radius.circular(10),
                                                   bottomRight:
@@ -216,7 +215,9 @@ class ProductDetailsScreen extends StatelessWidget {
                                   ),
                                   InkWell(
                                       onTap: () {
-                                        _showReviews(context: context);
+                                        _showReviews(
+                                            context: context,
+                                            productId: productId);
                                       },
                                       child: RatingStarRow(
                                         rating: double.parse(_
@@ -519,6 +520,7 @@ class ProductDetailsScreen extends StatelessWidget {
 
   void _showReviews({
     required BuildContext context,
+    required productId,
   }) {
     showModalBottomSheet(
       isScrollControlled: true,
@@ -526,7 +528,7 @@ class ProductDetailsScreen extends StatelessWidget {
       context: context,
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
-        return const ShowReviewsWidget();
+        return ShowReviewsWidget(productId: productId);
       },
     );
   }

@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:party_wizard/widgets/see_more_widget.dart';
+import 'package:party_wizard/widgets/select_rating_star_row.dart';
 
 import '../../../../utils/app_colors.dart';
-import '../constants/assets.dart';
-import 'select_rating_star_row.dart';
+import '../controllers/product_details_controller.dart';
 
 class AddReviewsWidget extends StatefulWidget {
-  final String imageUrl;
-  const AddReviewsWidget({super.key, required this.imageUrl});
+  final int productId;
+  const AddReviewsWidget({super.key, required this.productId});
 
   @override
   State<AddReviewsWidget> createState() => _AddReviewsWidgetState();
@@ -17,15 +18,25 @@ class AddReviewsWidget extends StatefulWidget {
 
 class _AddReviewsWidgetState extends State<AddReviewsWidget> {
   @override
+  void initState() {
+    final _ = ProductDetailsController(productId: widget.productId);
+    _.selectedRate = 1;
+    _.reiviewTextController.clear();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: SafeArea(
-        child: SingleChildScrollView(
+    return GetBuilder<ProductDetailsController>(builder: (_) {
+      final product = _.productDetailsResponse!.data;
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -67,8 +78,13 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                           height: size.width * .2,
                           width: size.width * .2,
                           child: Card(
-                            child:
-                                CachedNetworkImage(imageUrl: widget.imageUrl),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: CachedNetworkImage(
+                                imageUrl: product!.images!.first,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -76,18 +92,18 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                         ),
                         SizedBox(
                           height: size.width * .2,
-                          child: const Column(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Pary Balloons",
-                                style: TextStyle(
+                                "${product!.title}",
+                                style: const TextStyle(
                                     color: AppColors.c_3e3e3e, fontSize: 14),
                               ),
                               Text(
-                                "\$49.00",
-                                style: TextStyle(
+                                "${product.currency} ${product.price}",
+                                style: const TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w900),
                               ),
                             ],
@@ -98,7 +114,16 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                     const Divider(
                       color: Colors.transparent,
                     ),
-                     SeeMoreTextWidget(text: "",),
+                    Container(
+                      constraints: const BoxConstraints(maxHeight: 150),
+                      child: Scrollbar(
+                        child: SingleChildScrollView(
+                          child: SeeMoreTextWidget(
+                            text: "${product.description}",
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -124,7 +149,11 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                     SizedBox(
                       height: size.width * .025,
                     ),
-                    SelectRatingStarRow(),
+                    SelectRatingStarRow(
+                      onChanged: (rate) {
+                        _.selectedRate = rate;
+                      },
+                    ),
                     SizedBox(
                       height: size.width * .025,
                     ),
@@ -141,6 +170,7 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                       height: size.width * .025,
                     ),
                     TextFormField(
+                      controller: _.reiviewTextController,
                       maxLines: 4,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -154,35 +184,42 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
               SizedBox(
                 height: size.width * .1,
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  height: 60,
-                  elevation: 0,
-                  color: AppColors.primaryColor,
-                  shape: RoundedRectangleBorder(
+              InkWell(
+                onTap: () {
+                  _.addReview(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: size.width * .05),
+                  height: size.width * .125,
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
                     // Same as the button's shape
+                    gradient: const LinearGradient(
+                      colors: [AppColors.c_ecc89c, AppColors.c_76644e],
+                      // Define your gradient colors
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
                   ),
                   child: Center(
-                    child: Text(
-                      'add_review'.tr,
-                      style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900),
-                    ),
+                    child: Obx(() => _.isAddingReview.value
+                        ? const CupertinoActivityIndicator(
+                            color: Colors.white,
+                          )
+                        : Text(
+                            'add_review'.tr,
+                            style: TextStyle(
+                                fontSize: size.width * .06,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900),
+                          )),
                   ),
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
