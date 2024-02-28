@@ -411,7 +411,8 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                   height: 60,
                   minWidth: double.infinity,
                   shape: const RoundedRectangleBorder(
-                      borderRadius: CustomTheme.borderRadius),
+                    borderRadius: CustomTheme.borderRadius,
+                  ),
                   onPressed: () {
                     _.addReview(context);
                   },
