@@ -179,7 +179,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: efeeb171ac02d623bdaefe121539939821e10811
   FirebaseInstallations: 558b1da7d65afeb996fd5c814332f013234ece4e
   FirebaseMessaging: 06c414a21b122396a26847c523d5c370f8325df5
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_credit_card: 48fb35065294868bc6a3e7f18a42f28929b84f48
   flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a

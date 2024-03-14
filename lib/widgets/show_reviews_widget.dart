@@ -423,9 +423,10 @@ class _AddReviewsWidgetState extends State<AddReviewsWidget> {
                       : Text(
                           'add_review'.tr,
                           style: TextStyle(
-                              fontSize: size.width * .06,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900),
+                            fontSize: size.width * .06,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                          ),
                         )),
                 ),
               ),

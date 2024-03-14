@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1081604153788:android:39c65ef1d3acfeeb410bb9",
+        "mobilesdk_app_id": "1:1081604153788:android:270a7f4a33de19a3410bb9",
         "android_client_info": {
-          "package_name": "com.estisharati.partywizard"
+          "package_name": "com.partywizard.app"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "1081604153788-odlkpsha7p942n5fuain4dm9kl6bq9fm.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.estisharati.partywizard",
-            "certificate_hash": "e719082841907f1424539bfb233ab153c012c26c"
-          }
-        },
         {
           "client_id": "1081604153788-dptir1h7125mkff3fvhisif56583j8h4.apps.googleusercontent.com",
           "client_type": 3

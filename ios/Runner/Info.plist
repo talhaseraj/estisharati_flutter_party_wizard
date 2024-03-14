@@ -18,10 +18,10 @@
 	<string>party_wizard</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>GIDClientID</key>
-<!-- TODO Replace this value: -->
-<!-- Copied from GoogleService-Info.plist key CLIENT_ID -->
-	<string>1081604153788-3eohpfh2a4g7alq7j2gprbm8oltllfbk.apps.googleusercontent.com</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -29,24 +29,21 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<!-- TODO Replace this value: -->
-				<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
 				<string>com.googleusercontent.apps.1081604153788-3eohpfh2a4g7alq7j2gprbm8oltllfbk</string>
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>GIDClientID</key>
+	<string>1081604153788-3eohpfh2a4g7alq7j2gprbm8oltllfbk.apps.googleusercontent.com</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

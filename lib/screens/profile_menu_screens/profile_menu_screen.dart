@@ -53,14 +53,16 @@ class ProfileMenuScreen extends StatelessWidget {
                 icon: Icons.lock_outline_rounded,
                 title: "security".tr,
                 ontap: () => Get.to(() => const SecurityScreen())),
-            const SizedBox(
-              height: 10,
-            ),
-            CustomListtile(
-                size: size,
-                icon: Icons.wallet_outlined,
-                title: "payment".tr,
-                ontap: () {}),
+            if (false)
+              const SizedBox(
+                height: 10,
+              ),
+            if (false)
+              CustomListtile(
+                  size: size,
+                  icon: Icons.wallet_outlined,
+                  title: "payment".tr,
+                  ontap: () {}),
             const SizedBox(
               height: 10,
             ),
